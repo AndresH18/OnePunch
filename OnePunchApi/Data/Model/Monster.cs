@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace OnePunchApi.Data.Model;
 
@@ -12,9 +13,9 @@ public class Monster : IModel
 
     #region Relations
 
-    public virtual List<Sponsor> Sponsors { get; set; } = new();
-    public virtual List<Fight> Fights { get; set; } = new();
-    public virtual MonsterCell MonsterCell { get; set; }
+    [JsonIgnore] public virtual List<Sponsor> Sponsors { get; set; } = new();
+    [JsonIgnore] public virtual List<Fight> Fights { get; set; } = new();
+    [JsonIgnore] public virtual MonsterCell MonsterCell { get; set; }
 
     #endregion
 }

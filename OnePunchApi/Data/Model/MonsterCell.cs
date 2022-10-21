@@ -1,4 +1,6 @@
-﻿namespace OnePunchApi.Data.Model;
+﻿using System.Text.Json.Serialization;
+
+namespace OnePunchApi.Data.Model;
 
 public class MonsterCell
 {
@@ -9,7 +11,7 @@ public class MonsterCell
 
     #region Relations
 
-    public virtual Monster Monster { get; set; }
+    [JsonIgnore] public virtual Monster Monster { get; set; }
 
     #endregion
 }

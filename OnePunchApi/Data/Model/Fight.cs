@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace OnePunchApi.Data.Model;
 
@@ -12,8 +13,8 @@ public class Fight
 
     #region Relations
 
-    public virtual Monster Monster { get; set; }
-    public virtual Hero Hero { get; set; }
+    [JsonIgnore] public virtual Monster Monster { get; set; }
+    [JsonIgnore] public virtual Hero Hero { get; set; }
 
     #endregion
 }
