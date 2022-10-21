@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using OnePunchApi.Data;
 using OnePunchApi.Data.Model;
+using OnePunchApi.Data.Repository;
 
 namespace OnePunchApi.Controllers;
 
@@ -9,23 +10,23 @@ namespace OnePunchApi.Controllers;
 [Route("[Controller]")]
 public class HeroesController : ControllerBase
 {
-    private readonly AssociationDb _db;
+    private readonly HeroesRepository _repo;
 
-    public HeroesController(AssociationDb db)
+    public HeroesController(HeroesRepository repo)
     {
-        _db = db;
+        _repo = repo;
     }
 
     [HttpGet]
-    public ActionResult<List<Hero>> GetAll()
+    public ActionResult<IEnumerable<Hero>> GetAll()
     {
-        return Ok(_db.Heroes.AsNoTracking().ToList());
+        return Ok(_repo.GetAll());
     }
 
     [HttpGet("{id:int}")]
     public ActionResult<Hero?> Get(int id)
     {
-        var hero = _db.Heroes.FirstOrDefault(h => h.Id == id);
+        var hero = _repo.Get(id);
         if (hero is null)
             return NotFound();
 
@@ -37,10 +38,10 @@ public class HeroesController : ControllerBase
     public IActionResult CreateHero([FromBody] Hero hero)
     {
         if (hero.Id != 0)
-            return BadRequest();
-        
-        _db.Heroes.Add(hero);
-        _db.SaveChanges();
+            return BadRequest("Hero must not have an Id");
+
+        _repo.Create(hero);
+
         return CreatedAtAction(nameof(CreateHero), new {hero.Id}, hero);
     }
 
@@ -52,12 +53,12 @@ public class HeroesController : ControllerBase
     [HttpDelete("{id:int}")]
     public IActionResult DeleteHero(int id)
     {
-        var hero = _db.Heroes.FirstOrDefault(h => h.Id == id);
+        var hero = _repo.Get(id);
         if (hero is null)
             return NotFound();
 
-        _db.Heroes.Remove(hero);
-        _db.SaveChanges();
+        _repo.Delete(hero);
+        
         return NoContent();
     }
 }
