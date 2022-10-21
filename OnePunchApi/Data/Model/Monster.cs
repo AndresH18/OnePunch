@@ -15,7 +15,7 @@ public class Monster : IModel
 
     [JsonIgnore] public virtual List<Sponsor> Sponsors { get; set; } = new();
     [JsonIgnore] public virtual List<Fight> Fights { get; set; } = new();
-    [JsonIgnore] public virtual MonsterCell MonsterCell { get; set; }
+    [JsonIgnore] public virtual MonsterCell? MonsterCell { get; set; }
 
     #endregion
 }

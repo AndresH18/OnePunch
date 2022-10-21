@@ -33,7 +33,7 @@ public abstract class AbstractController<T> : ControllerBase
 
     // TODO: authorize actions.
     [HttpDelete("{id:int}")]
-    public IActionResult DeleteHero(int id)
+    public IActionResult Delete(int id)
     {
         var t = _repo.Get(id);
         if (t is null)
@@ -45,5 +45,5 @@ public abstract class AbstractController<T> : ControllerBase
     }
 
     [HttpPost]
-    public abstract IActionResult CreateHero([FromBody] T t);
+    public abstract IActionResult Create([FromBody] T t);
 }

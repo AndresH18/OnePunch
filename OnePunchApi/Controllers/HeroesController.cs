@@ -35,14 +35,26 @@ public class HeroesController : ControllerBase
 
     // TODO: authorize actions.
     [HttpPost]
-    public IActionResult CreateHero([FromBody] Hero hero)
+    public IActionResult Create([FromBody] Hero hero)
     {
         if (hero.Id != 0)
             return BadRequest("Hero must not have an Id");
 
         _repo.Create(hero);
 
-        return CreatedAtAction(nameof(CreateHero), new {hero.Id}, hero);
+        return CreatedAtAction(nameof(Create), new {hero.Id}, hero);
+    }
+
+    [HttpPut("{id:int}/rank")]
+    public IActionResult UpdateRank(int id, [FromBody] Rank rank)
+    {
+        var hero = _repo.Get(id);
+        if (hero is null)
+            return BadRequest();
+
+        hero.Rank = rank;
+        _repo.SaveChanges();
+        return Ok(rank);
     }
 
     // [HttpPut("{id:int}")]
@@ -51,14 +63,14 @@ public class HeroesController : ControllerBase
     //     
     // }
     [HttpDelete("{id:int}")]
-    public IActionResult DeleteHero(int id)
+    public IActionResult Delete(int id)
     {
         var hero = _repo.Get(id);
         if (hero is null)
             return NotFound();
 
         _repo.Delete(hero);
-        
+
         return NoContent();
     }
 }

@@ -21,12 +21,12 @@ public class HeroesRepository : IRepository<Hero>
 
     public IEnumerable<Hero> GetAll()
     {
-        return _db.Heroes.AsNoTracking().ToList();
+        return _db.Heroes.ToList();
     }
 
     public Hero? Get(int id)
     {
-        return _db.Heroes.AsNoTracking().FirstOrDefault(h => h.Id == id);
+        return _db.Heroes.FirstOrDefault(h => h.Id == id);
     }
 
     public void Update(Hero t)
@@ -37,6 +37,11 @@ public class HeroesRepository : IRepository<Hero>
     public void Delete(Hero hero)
     {
         _db.Heroes.Remove(hero);
+        _db.SaveChanges();
+    }
+
+    public void SaveChanges()
+    {
         _db.SaveChanges();
     }
 }

@@ -1,10 +1,12 @@
 using OnePunchApi.Data;
+using OnePunchApi.Data.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<AssociationDb>();
 
+builder.Services.AddScoped<HeroesRepository>();
 
 
 builder.Services.AddControllers();

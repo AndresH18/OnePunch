@@ -7,4 +7,6 @@ public interface IRepository<T>
     T? Get(int  id);
     void Update(T t);
     void Delete(T t);
+
+    void SaveChanges();
 }
