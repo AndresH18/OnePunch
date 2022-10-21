@@ -9,10 +9,12 @@ public class Monster : IModel
 
     [Required] public DisasterLevel DisasterLevel { get; set; }
 
+
     #region Relations
 
     public virtual List<Sponsor> Sponsors { get; set; } = new();
     public virtual List<Fight> Fights { get; set; } = new();
+    public virtual MonsterCell MonsterCell { get; set; }
 
     #endregion
 }

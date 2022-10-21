@@ -6,14 +6,14 @@ namespace OnePunchApi.Data;
 
 public class AssociationDb : DbContext
 {
-    private const string ConnectionString = "Data Source=heros.db";
+    private const string ConnectionString = "Data Source=heroes.db";
 
     public DbSet<Hero> Heroes { get; set; }
     public DbSet<Monster> Monsters { get; set; }
     public DbSet<Sponsor> Sponsors { get; set; }
-
     public DbSet<Fight> Fights { get; set; }
-    
+    public DbSet<MonsterCell> MonsterCells { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {

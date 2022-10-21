@@ -19,6 +19,12 @@ public static class SeedData
             new() {Name = "Nyan", DisasterLevel = DisasterLevel.Dragon},
             new() {Name = "Boros", DisasterLevel = DisasterLevel.Dragon},
             new() {Name = "Beast King", DisasterLevel = DisasterLevel.Demon},
+            new() {Name = "Gouketsu", DisasterLevel = DisasterLevel.Dragon},
+        };
+        var monsterCells = new MonsterCell[]
+        {
+            new() {IsConsumed = true, Monster = monsters[1]},
+            new() {IsConsumed = true, Monster = monsters[4]},
         };
 
         var sponsor = new Sponsor
@@ -37,6 +43,7 @@ public static class SeedData
         db.Monsters.AddRange(monsters);
         db.Sponsors.Add(sponsor);
         db.Fights.AddRange(fights);
+        db.MonsterCells.AddRange(monsterCells);
 
         db.SaveChanges();
     }
