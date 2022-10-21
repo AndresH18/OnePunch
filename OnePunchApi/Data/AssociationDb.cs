@@ -6,9 +6,21 @@ namespace OnePunchApi.Data;
 
 public class AssociationDb : DbContext
 {
+    private const string ConnectionString = "Data Source=heros.db";
+
+    public DbSet<Hero> Heroes { get; set; }
+    public DbSet<Monster> Monsters { get; set; }
+    public DbSet<Sponsor> Sponsors { get; set; }
+
+    public DbSet<Fight> Fights { get; set; }
+    
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        base.OnConfiguring(optionsBuilder);
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseSqlite(ConnectionString);
+        }
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -21,12 +33,13 @@ public class AssociationDb : DbContext
             .Property(h => h.Rank)
             .HasConversion<EnumToStringConverter<Rank>>();
 
-        modelBuilder.Entity<HeroSponsorship>()
-            .HasKey(hsp => new {hsp.SponsorId, hsp.HeroId});
+        modelBuilder.Entity<Fight>()
+            .HasKey(f => new {f.Id, f.HeroId, f.MonsterId});
 
-        modelBuilder.Entity<MonsterSponsorship>()
-            .HasKey(msp => new {msp.SponsorId, msp.MonsterId});
+        // modelBuilder.Entity<HeroSponsorship>()
+        //     .HasKey(hsp => new {hsp.SponsorId, hsp.HeroId});
+        //
+        // modelBuilder.Entity<MonsterSponsorship>()
+        //     .HasKey(msp => new {msp.SponsorId, msp.MonsterId});
     }
-
-    // TODO: use Enum Converter for DisasterLevel, Rank
 }

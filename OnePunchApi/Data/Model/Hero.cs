@@ -9,7 +9,13 @@ public class Hero : IModel
 
     [Required] public Rank Rank { get; set; }
 
-    public string Address { get; set; } = string.Empty;
-    public string Phone { get; set; } = string.Empty;
-    
+    public string? Address { get; set; }
+    public string? Phone { get; set; }
+
+    #region Relations
+
+    public virtual List<Sponsor> Sponsors { get; set; } = new();
+    public virtual List<Fight> Fights { get; set; } = new();
+
+    #endregion
 }
