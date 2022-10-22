@@ -13,6 +13,10 @@ public class Hero : IModel
     [JsonConverter(typeof(JsonStringEnumConverter))]
     public Rank Rank { get; set; }
 
+    [Required]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public Status Status { get; set; } = Status.Alive;
+
     public string? Address { get; set; }
     public string? Phone { get; set; }
 

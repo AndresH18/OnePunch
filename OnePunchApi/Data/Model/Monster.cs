@@ -8,8 +8,13 @@ public class Monster : IModel
     public int Id { get; set; }
     [Required] public string Name { get; set; } = default!;
 
-    [Required] public DisasterLevel DisasterLevel { get; set; }
+    [Required]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public DisasterLevel DisasterLevel { get; set; }
 
+    [Required]
+    [JsonConverter(typeof(JsonStringEnumConverter))]
+    public Status Status { get; set; } = Status.Alive;
 
     #region Relations
 

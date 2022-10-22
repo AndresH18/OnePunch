@@ -7,6 +7,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AssociationDb>();
 
 builder.Services.AddScoped<HeroesRepository>();
+builder.Services.AddScoped<MonsterRepository>();
+builder.Services.AddScoped<SponsorRepository>();
 
 
 builder.Services.AddControllers();

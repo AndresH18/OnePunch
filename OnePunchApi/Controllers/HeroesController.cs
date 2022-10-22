@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Text.Json.Serialization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OnePunchApi.Data;
 using OnePunchApi.Data.Model;
@@ -52,8 +53,8 @@ public class HeroesController : ControllerBase
         if (hero is null)
             return BadRequest();
 
-        hero.Rank = rank;
-        _repo.SaveChanges();
+        _repo.ChangeRank(hero, rank);
+        
         return Ok(rank);
     }
 
@@ -62,14 +63,14 @@ public class HeroesController : ControllerBase
     // {
     //     
     // }
-    [HttpDelete("{id:int}")]
-    public IActionResult Delete(int id)
+    [HttpDelete("{id:int}/status")]
+    public IActionResult ChangeStatus(int id, [FromBody] Status status)
     {
         var hero = _repo.Get(id);
         if (hero is null)
             return NotFound();
 
-        _repo.Delete(hero);
+        _repo.ChangeStatus(hero, status);
 
         return NoContent();
     }

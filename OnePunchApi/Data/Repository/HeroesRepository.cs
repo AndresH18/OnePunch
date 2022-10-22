@@ -3,7 +3,7 @@ using OnePunchApi.Data.Model;
 
 namespace OnePunchApi.Data.Repository;
 
-public class HeroesRepository : IRepository<Hero>
+public class HeroesRepository
 {
     private readonly AssociationDb _db;
 
@@ -29,15 +29,16 @@ public class HeroesRepository : IRepository<Hero>
         return _db.Heroes.FirstOrDefault(h => h.Id == id);
     }
 
-    public void Update(Hero t)
+    public void ChangeRank(Hero hero, Rank rank)
     {
-        throw new NotImplementedException();
+        hero.Rank = rank;
+        SaveChanges();
     }
 
-    public void Delete(Hero hero)
+    public void ChangeStatus(Hero hero, Status status)
     {
-        _db.Heroes.Remove(hero);
-        _db.SaveChanges();
+        hero.Status = status;
+        SaveChanges();
     }
 
     public void SaveChanges()

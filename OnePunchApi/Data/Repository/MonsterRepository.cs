@@ -3,7 +3,7 @@ using OnePunchApi.Data.Model;
 
 namespace OnePunchApi.Data.Repository;
 
-public class MonsterRepository : IRepository<Monster>
+public class MonsterRepository
 {
     private readonly AssociationDb _db;
 
@@ -29,15 +29,16 @@ public class MonsterRepository : IRepository<Monster>
         return _db.Monsters.FirstOrDefault(m => m.Id == id);
     }
 
-    public void Update(Monster monster)
+    public void ChangeDisaster(Monster monster, DisasterLevel disasterLevel)
     {
-        throw new NotImplementedException();
+        monster.DisasterLevel = disasterLevel;
+        SaveChanges();
     }
 
-    public void Delete(Monster monster)
+    public void ChangeStatus(Monster monster, Status status)
     {
-        _db.Monsters.Remove(monster);
-        _db.SaveChanges();
+        monster.Status = Status.Dead;
+        SaveChanges();
     }
 
     public void SaveChanges()

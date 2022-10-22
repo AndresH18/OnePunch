@@ -25,21 +25,30 @@ public class AssociationDb : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Monster>()
-            .Property(m => m.DisasterLevel)
-            .HasConversion<EnumToStringConverter<DisasterLevel>>();
+        modelBuilder.Entity<Monster>(m =>
+        {
+            m.Property(p => p.DisasterLevel)
+                .HasConversion<EnumToStringConverter<DisasterLevel>>();
+            m.Property(p => p.Status)
+                .HasConversion<EnumToStringConverter<Status>>();
+        });
+        
+        modelBuilder.Entity<Hero>(h =>
+        {
+            h.Property(p => p.Rank)
+                .HasConversion<EnumToStringConverter<Rank>>();
+            h.Property(p => p.Status)
+                .HasConversion<EnumToStringConverter<Status>>();
+        });
 
-        modelBuilder.Entity<Hero>()
-            .Property(h => h.Rank)
-            .HasConversion<EnumToStringConverter<Rank>>();
+        modelBuilder.Entity<Sponsor>(s =>
+        {
+            s.Property(p => p.Status)
+                .HasConversion<EnumToStringConverter<Status>>();
+        });
 
         modelBuilder.Entity<Fight>()
             .HasKey(f => new {f.Id, f.HeroId, f.MonsterId});
 
-        // modelBuilder.Entity<HeroSponsorship>()
-        //     .HasKey(hsp => new {hsp.SponsorId, hsp.HeroId});
-        //
-        // modelBuilder.Entity<MonsterSponsorship>()
-        //     .HasKey(msp => new {msp.SponsorId, msp.MonsterId});
     }
 }
