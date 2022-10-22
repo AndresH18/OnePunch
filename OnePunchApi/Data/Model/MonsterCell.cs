@@ -11,7 +11,7 @@ public class MonsterCell
 
     #region Relations
 
-    [JsonIgnore] public virtual Monster? Monster { get; set; }
+    public virtual Monster? Monster { get; set; }
 
     #endregion
 }

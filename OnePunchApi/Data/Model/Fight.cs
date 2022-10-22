@@ -8,7 +8,6 @@ public class Fight
     public int Id { get; set; }
     public int MonsterId { get; set; }
     public int HeroId { get; set; }
-
     public bool IsHeroWinner { get; set; }
 
     #region Relations

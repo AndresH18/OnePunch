@@ -33,4 +33,49 @@ public class SponsorRepository
         sponsor.Status = status;
         _db.SaveChanges();
     }
+
+    public Hero? AddHero(Sponsor sponsor, int heroId)
+    {
+        var hero = _db.Heroes.FirstOrDefault(h => h.Id == heroId);
+        if (hero is null)
+            return null;
+
+        sponsor.Heroes.Add(hero);
+        _db.SaveChanges();
+
+        return hero;
+    }
+
+    public void RemoveHero(Sponsor sponsor, int monsterId)
+    {
+        var hero = _db.Heroes.FirstOrDefault(h => h.Id == monsterId);
+        if (hero is null)
+            return;
+
+        sponsor.Heroes.Remove(hero);
+        _db.SaveChanges();
+    }
+
+
+    public Monster? AddMonster(Sponsor sponsor, int monsterId)
+    {
+        var monster = _db.Monsters.FirstOrDefault(h => h.Id == monsterId);
+        if (monster is null)
+            return null;
+
+        sponsor.Monsters.Add(monster);
+        _db.SaveChanges();
+
+        return monster;
+    }
+
+    public void RemoveMonster(Sponsor sponsor, int monsterId)
+    {
+        var monster = _db.Monsters.FirstOrDefault(h => h.Id == monsterId);
+        if (monster is null)
+            return;
+
+        sponsor.Monsters.Remove(monster);
+        _db.SaveChanges();
+    }
 }

@@ -53,4 +53,54 @@ public class SponsorsController : ControllerBase
 
         return NoContent();
     }
+
+    [HttpPut("{id:int}/hero/{heroId:int}")]
+    public IActionResult AddHero(int id, int heroId)
+    {
+        var sponsor = _repo.Get(id);
+        if (sponsor is null)
+            return NotFound();
+
+        var hero = _repo.AddHero(sponsor, heroId);
+        if (hero is null)
+            return NotFound();
+
+        return Ok(hero.Id);
+    }
+
+    [HttpDelete("{id:int}/hero/{heroId:int}")]
+    public IActionResult RemoveHero(int id, int heroId)
+    {
+        var sponsor = _repo.Get(id);
+        if (sponsor is null)
+            return NotFound();
+
+        _repo.RemoveHero(sponsor, heroId);
+        return NoContent();
+    }
+
+    [HttpPut("{id:int}/monster/{monsterId:int}")]
+    public IActionResult AddMonster(int id, int monsterId)
+    {
+        var sponsor = _repo.Get(id);
+        if (sponsor is null)
+            return NotFound();
+
+        var monster = _repo.AddMonster(sponsor, monsterId);
+        if (monster is null)
+            return NotFound();
+
+        return Ok(monster.Id);
+    }
+    
+    [HttpDelete("{id:int}/monster/{monsterId:int}")]
+    public IActionResult RemoveMonster(int id, int monsterId)
+    {
+        var sponsor = _repo.Get(id);
+        if (sponsor is null)
+            return NotFound();
+
+        _repo.RemoveMonster(sponsor, monsterId);
+        return NoContent();
+    }
 }
