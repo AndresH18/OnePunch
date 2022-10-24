@@ -8,7 +8,7 @@ using OnePunchApi.Data.Repository;
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[Controller]")]
+[Route("[controller]")]
 public class HeroesController : ControllerBase
 {
     private readonly HeroesRepository _repo;

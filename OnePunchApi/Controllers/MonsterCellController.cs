@@ -1,13 +1,12 @@
-﻿using System.Runtime.InteropServices;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 
 namespace OnePunchApi.Controllers;
 
-//TODO: authorization
 [ApiController]
-[Route("[Controller]")]
+[Route("[controller]")]
+// [MyAuthentication]
 public class MonsterCellController : ControllerBase
 {
     private readonly MonsterCellRepository _repo;
@@ -17,7 +16,7 @@ public class MonsterCellController : ControllerBase
         _repo = repo;
     }
 
-    [HttpGet]
+    [HttpGet(Name = "GetMonsterCells")]
     public ActionResult<IEnumerable<MonsterCell>> GetAll()
     {
         return Ok(_repo.GetAll());
@@ -35,7 +34,8 @@ public class MonsterCellController : ControllerBase
 
     [HttpPost]
     [HttpPost("monster/{monsterId:int}")]
-    public IActionResult Register([FromBody] MonsterCell monsterCell, [FromRoute] int monsterId = 0)
+    public IActionResult Register([Microsoft.AspNetCore.Mvc.FromBody] MonsterCell monsterCell,
+        [FromRoute] int monsterId = 0)
     {
         if (monsterCell.Id != 0)
             return BadRequest();

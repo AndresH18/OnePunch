@@ -7,7 +7,7 @@ using OnePunchApi.Data.Repository;
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[Controller]")]
+[Route("[controller]")]
 public class MonstersController : ControllerBase
 {
     private readonly MonsterRepository _repo;
