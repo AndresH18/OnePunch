@@ -24,7 +24,7 @@ public class MonstersController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public ActionResult<Monster?> Get(int id)
+    public ActionResult<Monster?> Get([FromRoute] int id)
     {
         var monster = _repo.Get(id);
         if (monster is null)
@@ -46,7 +46,7 @@ public class MonstersController : ControllerBase
     }
 
     [HttpPut("{id:int}/disaster")]
-    public IActionResult UpdateDisaster(int id, [FromBody] DisasterLevel disasterLevel)
+    public IActionResult UpdateDisaster([FromRoute] int id, [FromBody] DisasterLevel disasterLevel)
     {
         var monster = _repo.Get(id);
         if (monster is null)
@@ -58,7 +58,7 @@ public class MonstersController : ControllerBase
     }
 
     [HttpDelete("{id:int}/status")]
-    public IActionResult ChangeStatus(int id, [FromBody] Status status)
+    public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var monster = _repo.Get(id);
         if (monster is null)

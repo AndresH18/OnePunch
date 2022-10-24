@@ -22,7 +22,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public ActionResult<IEnumerable<Sponsor>> Get(int id)
+    public ActionResult<IEnumerable<Sponsor>> Get([FromRoute] int id)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)
@@ -43,7 +43,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/status")]
-    public IActionResult ChangeStatus(int id, [FromBody] Status status)
+    public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)
@@ -55,7 +55,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/hero/{heroId:int}")]
-    public IActionResult AddHero(int id, int heroId)
+    public IActionResult AddHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)
@@ -69,7 +69,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/hero/{heroId:int}")]
-    public IActionResult RemoveHero(int id, int heroId)
+    public IActionResult RemoveHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)
@@ -80,7 +80,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]
-    public IActionResult AddMonster(int id, int monsterId)
+    public IActionResult AddMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)
@@ -92,9 +92,9 @@ public class SponsorsController : ControllerBase
 
         return Ok(monster.Id);
     }
-    
+
     [HttpDelete("{id:int}/monster/{monsterId:int}")]
-    public IActionResult RemoveMonster(int id, int monsterId)
+    public IActionResult RemoveMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);
         if (sponsor is null)

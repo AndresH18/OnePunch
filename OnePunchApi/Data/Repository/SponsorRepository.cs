@@ -4,9 +4,9 @@ namespace OnePunchApi.Data.Repository;
 
 public class SponsorRepository
 {
-    private readonly AssociationDb _db;
+    private readonly HeroAssociationDb _db;
 
-    public SponsorRepository(AssociationDb db)
+    public SponsorRepository(HeroAssociationDb db)
     {
         _db = db;
     }

@@ -4,7 +4,7 @@ namespace OnePunchApi.Data;
 
 public static class SeedData
 {
-    public static void Initialize(AssociationDb db)
+    public static void Initialize(HeroAssociationDb db)
     {
         // https://onepunchman.fandom.com/wiki/Heroes
         var heroes = new Hero[]

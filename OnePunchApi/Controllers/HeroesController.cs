@@ -25,7 +25,7 @@ public class HeroesController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public ActionResult<Hero?> Get(int id)
+    public ActionResult<Hero?> Get([FromRoute] int id)
     {
         var hero = _repo.Get(id);
         if (hero is null)
@@ -47,14 +47,14 @@ public class HeroesController : ControllerBase
     }
 
     [HttpPut("{id:int}/rank")]
-    public IActionResult UpdateRank(int id, [FromBody] Rank rank)
+    public IActionResult UpdateRank([FromRoute] int id, [FromBody] Rank rank)
     {
         var hero = _repo.Get(id);
         if (hero is null)
             return BadRequest();
 
         _repo.ChangeRank(hero, rank);
-        
+
         return Ok(rank);
     }
 
@@ -64,7 +64,7 @@ public class HeroesController : ControllerBase
     //     
     // }
     [HttpDelete("{id:int}/status")]
-    public IActionResult ChangeStatus(int id, [FromBody] Status status)
+    public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var hero = _repo.Get(id);
         if (hero is null)

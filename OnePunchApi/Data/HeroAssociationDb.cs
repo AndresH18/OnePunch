@@ -4,7 +4,7 @@ using OnePunchApi.Data.Model;
 
 namespace OnePunchApi.Data;
 
-public class AssociationDb : DbContext
+public class HeroAssociationDb : DbContext
 {
     private const string ConnectionString = "Data Source=heroes.db";
 
