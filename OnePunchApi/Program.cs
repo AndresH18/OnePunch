@@ -4,11 +4,12 @@ using OnePunchApi.Data.Repository;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddDbContext<AssociationDb>();
+builder.Services.AddDbContext<HeroAssociationDb>();
 
 builder.Services.AddScoped<HeroesRepository>();
 builder.Services.AddScoped<MonsterRepository>();
 builder.Services.AddScoped<SponsorRepository>();
+builder.Services.AddScoped<MonsterCellRepository>();
 
 
 builder.Services.AddControllers();
@@ -29,7 +30,7 @@ if (app.Environment.IsDevelopment())
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
 using (var scope = scopeFactory.CreateScope())
 {
-    using var db = scope.ServiceProvider.GetRequiredService<AssociationDb>();
+    using var db = scope.ServiceProvider.GetRequiredService<HeroAssociationDb>();
     db.Database.EnsureDeleted();
     if (db.Database.EnsureCreated())
     {
