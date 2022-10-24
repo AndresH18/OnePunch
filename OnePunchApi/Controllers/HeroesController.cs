@@ -1,7 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using OnePunchApi.Data;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 

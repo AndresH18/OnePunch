@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using OnePunchApi.Data;
 using OnePunchApi.Data.Repository;
 
@@ -10,7 +11,6 @@ builder.Services.AddScoped<HeroesRepository>();
 builder.Services.AddScoped<MonsterRepository>();
 builder.Services.AddScoped<SponsorRepository>();
 builder.Services.AddScoped<MonsterCellRepository>();
-
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -40,6 +40,7 @@ using (var scope = scopeFactory.CreateScope())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

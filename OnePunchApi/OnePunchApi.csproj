@@ -9,12 +9,9 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.10" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Filters" />
     </ItemGroup>
 
 </Project>

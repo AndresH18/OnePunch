@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Filters;
 
 namespace OnePunchApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-// [MyAuthentication]
 public class MonsterCellController : ControllerBase
 {
     private readonly MonsterCellRepository _repo;
@@ -34,7 +35,7 @@ public class MonsterCellController : ControllerBase
 
     [HttpPost]
     [HttpPost("monster/{monsterId:int}")]
-    public IActionResult Register([Microsoft.AspNetCore.Mvc.FromBody] MonsterCell monsterCell,
+    public IActionResult Register([FromBody] MonsterCell monsterCell,
         [FromRoute] int monsterId = 0)
     {
         if (monsterCell.Id != 0)

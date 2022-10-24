@@ -28,9 +28,14 @@
 - **[Microsoft.AspNet.WebApi.Core](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Core)**
 - **[Microsoft - Authentication Filters](https://learn.microsoft.com/en-us/aspnet/web-api/overview/security/authentication-filters)**
 - [ASP.NET Web API Basic Authentication Sample](https://github.com/aspnet/samples/tree/main/samples/aspnet/WebApi/BasicAuthentication)
+- [idunno.Authentication](https://github.com/blowdart/idunno.Authentication/tree/dev/src/idunno.Authentication.Basic)
+- [Identity model customization in ASP.NET Core](https://learn.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?source=recommendations&view=aspnetcore-6.0)
 
 
 - [Medium - JWT Token Authorization](https://medium.com/c-sharp-progarmming/jwt-authentication-in-asp-net-core-web-api-82895c29734c)
 - [Authentication Filters](https://stackoverflow.com/questions/38751104/web-api-authorize-at-controller-or-action-level-no-authentication)
 - [StackOverflow - Authentication](https://stackoverflow.com/questions/38751104/web-api-authorize-at-controller-or-action-level-no-authentication)
 - [ASP.NET CORE Web API - JWT Authentication (Refresh Token + Role Based + Entity Framework ) | Swagger](https://www.youtube.com/watch?v=uWhbcR06VcA)
+
+- [How to correctly setup Policy Authorization for WEB API in .NET Core](https://stackoverflow.com/a/52042420)
+- [How to get failed AuthorizeAttribute to return HTTP401?](https://stackoverflow.com/a/59507012)
