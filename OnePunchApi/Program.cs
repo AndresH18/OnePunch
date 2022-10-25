@@ -1,18 +1,25 @@
 using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Policies.Handlers;
+using OnePunchApi.Policies.Requirements;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<HeroAssociationDb>();
 
+builder.Services.AddSingleton<IAuthorizationHandler, RoleHandler>();
+builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+
 builder.Services.AddScoped<HeroesRepository>();
 builder.Services.AddScoped<MonsterRepository>();
 builder.Services.AddScoped<SponsorRepository>();
 builder.Services.AddScoped<MonsterCellRepository>();
+
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
@@ -21,12 +28,20 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            // ValidateIssuerSigningKey = true,
+            ValidateIssuerSigningKey = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
-            // IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
         };
     });
+
+builder.Services.AddAuthorization(options =>
+{
+    // options.AddPolicy("IsAdmin",
+    //     policyBuilder => { policyBuilder.AddRequirements(new AdminHandler()); });
+    options.AddPolicy("Admin",
+        policyBuilder => { policyBuilder.AddRequirements(new RoleRequirement("Administrator")); });
+});
 
 
 builder.Services.AddControllers();

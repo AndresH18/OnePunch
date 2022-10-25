@@ -51,10 +51,12 @@ public class LoginController : ControllerBase
         var claims = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, user.Username),
-            new Claim(ClaimTypes.Email, user.EmailAddress),
-            new Claim(ClaimTypes.GivenName, user.GivenName),
-            new Claim(ClaimTypes.Surname, user.Surname),
+            // new Claim(ClaimTypes.Email, user.EmailAddress),
+            // new Claim(ClaimTypes.GivenName, user.GivenName),
+            // new Claim(ClaimTypes.Surname, user.Surname),
             new Claim(ClaimTypes.Role, user.Role),
+            // ReSharper disable once SpecifyACultureInStringConversionExplicitly
+            new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToString())
         };
 
         var token = new JwtSecurityToken(_config["Jwt:Issuer"],
@@ -68,8 +70,7 @@ public class LoginController : ControllerBase
 
     private User? GetCurrentUser()
     {
-        var identity = HttpContext.User.Identity as ClaimsIdentity;
-        if (identity != null)
+        if (HttpContext.User.Identity is ClaimsIdentity identity)
         {
             var userClaims = identity.Claims;
             // creating list to avoid IEnumerable fall
@@ -81,6 +82,7 @@ public class LoginController : ControllerBase
                 GivenName = claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value!,
                 Surname = claims.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value!,
                 Role = claims.FirstOrDefault(c => c.Type == ClaimTypes.Role)?.Value!,
+                DateOfBirth = DateTime.Parse(claims.FirstOrDefault(c => c.Type == ClaimTypes.DateOfBirth)?.Value!)
             };
         }
 

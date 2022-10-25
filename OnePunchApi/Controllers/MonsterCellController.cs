@@ -18,6 +18,7 @@ public class MonsterCellController : ControllerBase
     }
 
     [HttpGet(Name = "GetMonsterCells")]
+    [Authorize(Policy = "Admin")]
     public ActionResult<IEnumerable<MonsterCell>> GetAll()
     {
         return Ok(_repo.GetAll());

@@ -8,4 +8,6 @@ public class User
     public string Role { get; set; } = default!;
     public string Surname { get; set; } = default!;
     public string GivenName { get; set; } = default!;
+    
+    public DateTime DateOfBirth { get; set; }
 }
