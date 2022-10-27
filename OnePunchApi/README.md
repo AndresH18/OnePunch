@@ -13,7 +13,7 @@
    una
    lucha se quiere saber el resultado y el héroe involucrado, un monstruo puede estar involucrado en muchas luchas con
    muchos heroes.
-4. [ ] Se conoce la existencia de las celulas mounstrificas las cuales convierten a los humanos, la asociación
+4. [x] Se conoce la existencia de las celulas mounstrificas las cuales convierten a los humanos, la asociación
    preocupada por
    esta situación quiere tener toda la información acerca de las celulas y que monstruo o héroe las posee.
 5. [ ] Se quiere hacer una lista de los 10 heroes mas fuertes para enviarles un premio por labor en la asociación.

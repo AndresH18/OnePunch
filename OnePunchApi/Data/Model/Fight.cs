@@ -12,8 +12,8 @@ public class Fight
 
     #region Relations
 
-    [JsonIgnore] public virtual Monster Monster { get; set; }
-    [JsonIgnore] public virtual Hero Hero { get; set; }
+    public virtual Monster Monster { get; set; }
+    public virtual Hero Hero { get; set; }
 
     #endregion
 }

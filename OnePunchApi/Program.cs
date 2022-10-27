@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
+using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 using OnePunchApi.Policies.Handlers;
 using OnePunchApi.Policies.Requirements;
@@ -19,6 +20,7 @@ builder.Services.AddScoped<HeroesRepository>();
 builder.Services.AddScoped<MonsterRepository>();
 builder.Services.AddScoped<SponsorRepository>();
 builder.Services.AddScoped<MonsterCellRepository>();
+builder.Services.AddScoped<FightsRepository>();
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

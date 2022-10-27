@@ -13,6 +13,7 @@ public class HeroAssociationDb : DbContext
     public DbSet<Sponsor> Sponsors { get; set; }
     public DbSet<Fight> Fights { get; set; }
     public DbSet<MonsterCell> MonsterCells { get; set; }
+    public DbSet<Game> Games { get; set; }
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -32,7 +33,7 @@ public class HeroAssociationDb : DbContext
             m.Property(p => p.Status)
                 .HasConversion<EnumToStringConverter<Status>>();
         });
-        
+
         modelBuilder.Entity<Hero>(h =>
         {
             h.Property(p => p.Rank)
@@ -49,6 +50,5 @@ public class HeroAssociationDb : DbContext
 
         modelBuilder.Entity<Fight>()
             .HasKey(f => new {f.Id, f.HeroId, f.MonsterId});
-
     }
 }
