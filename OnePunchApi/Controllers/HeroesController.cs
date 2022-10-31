@@ -40,7 +40,7 @@ public class HeroesController : ControllerBase
 
         _repo.Create(hero);
 
-        return CreatedAtAction(nameof(Create), new {hero.Id}, hero);
+        return CreatedAtAction(nameof(Create), new { hero.Id }, hero);
     }
 
     [HttpPut("{id:int}/rank")]
