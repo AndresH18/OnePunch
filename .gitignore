@@ -3,3 +3,8 @@ obj/
 /packages/
 riderModule.iml
 /_ReSharper.Caches/
+/.vs
+/.idea/.idea.OnePunch/.idea
+/OnePunchApi/heroes.db-wal
+/OnePunchApi/heroes.db-shm
+/OnePunchApi/heroes.db
