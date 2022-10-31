@@ -56,7 +56,7 @@ public class LoginController : ControllerBase
             // new Claim(ClaimTypes.Surname, user.Surname),
             new Claim(ClaimTypes.Role, user.Role),
             // ReSharper disable once SpecifyACultureInStringConversionExplicitly
-            new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToString())
+            new Claim(ClaimTypes.DateOfBirth, user.DateOfBirth.ToString()),
         };
 
         var token = new JwtSecurityToken(_config["Jwt:Issuer"],

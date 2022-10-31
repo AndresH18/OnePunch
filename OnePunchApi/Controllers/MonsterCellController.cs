@@ -8,6 +8,7 @@ namespace OnePunchApi.Controllers;
 
 [ApiController]
 [Route("[controller]")]
+// [Authorize(Policy = "S-Class-Hero")]
 public class MonsterCellController : ControllerBase
 {
     private readonly MonsterCellRepository _repo;
