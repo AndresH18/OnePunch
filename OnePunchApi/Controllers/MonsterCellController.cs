@@ -1,13 +1,11 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
-using OnePunchApi.Filters;
 
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/monster-cells")]
 // [Authorize(Policy = "S-Class-Hero")]
 public class MonsterCellController : ControllerBase
 {

@@ -6,7 +6,7 @@ using OnePunchApi.Data.Repository;
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("saitama")]
 // [Authorize(Policy = "Saitama")]
 public class SaitamaController : ControllerBase
 {

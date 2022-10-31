@@ -10,7 +10,7 @@ using OnePunchApi.Security.Models;
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("login")]
 public class LoginController : ControllerBase
 {
     private IConfiguration _config;

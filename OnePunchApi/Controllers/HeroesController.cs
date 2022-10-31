@@ -5,7 +5,8 @@ using OnePunchApi.Data.Repository;
 namespace OnePunchApi.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("heroes")]
+[Route("/")]
 public class HeroesController : ControllerBase
 {
     private readonly HeroesRepository _repo;
