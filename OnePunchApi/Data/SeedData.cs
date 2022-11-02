@@ -1,4 +1,5 @@
 ﻿using OnePunchApi.Data.Model;
+using OnePunchApi.Security.Models;
 
 namespace OnePunchApi.Data;
 
@@ -45,6 +46,21 @@ public static class SeedData
         db.Fights.AddRange(fights);
         db.MonsterCells.AddRange(monsterCells);
 
+        AddUsers(db);
+
         db.SaveChanges();
+    }
+
+    private static void AddUsers(HeroAssociationDb db)
+    {
+        db.Users.AddRange(
+            new User
+            {
+                Id = 1,
+                Name = "Andres",
+                Username = "ad_admin",
+                Password = "AD123",
+                Role = Role.Admin,
+            });
     }
 }
