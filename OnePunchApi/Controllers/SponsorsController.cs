@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Security.Policies;
 
 namespace OnePunchApi.Controllers;
 
@@ -32,9 +33,8 @@ public class SponsorsController : ControllerBase
         return Ok(sponsor);
     }
 
-    // TODO: Authorize Actions
     [HttpPost]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Create([FromBody] Sponsor sponsor)
     {
         if (sponsor.Id != 0)
@@ -45,7 +45,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/status")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var sponsor = _repo.Get(id);
@@ -58,7 +58,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/hero/{heroId:int}")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult AddHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
@@ -73,7 +73,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/hero/{heroId:int}")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult RemoveHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
@@ -85,7 +85,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult AddMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);
@@ -100,7 +100,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/monster/{monsterId:int}")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult RemoveMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);

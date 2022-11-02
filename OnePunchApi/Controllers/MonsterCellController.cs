@@ -2,13 +2,14 @@
 using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Security.Policies;
 
 namespace OnePunchApi.Controllers;
 
 [ApiController]
 [Route("/monster-cells")]
 // [Authorize(Policy = "S-Class-Hero")]
-[Authorize]
+[Authorize(Policy = PolicyConstants.HeroS)]
 public class MonsterCellController : ControllerBase
 {
     private readonly MonsterCellRepository _repo;
@@ -36,6 +37,7 @@ public class MonsterCellController : ControllerBase
 
     [HttpPost]
     [HttpPost("monster/{monsterId:int}")]
+    // [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Register([FromBody] MonsterCell monsterCell,
         [FromRoute] int monsterId = 0)
     {
@@ -44,7 +46,6 @@ public class MonsterCellController : ControllerBase
 
         if (monsterId >= 0)
         {
-            // TODO : fix nullable
 
             var r = _repo.Register(monsterCell, monsterId);
             if (r is null)
@@ -61,6 +62,7 @@ public class MonsterCellController : ControllerBase
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]
+    // [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult ChangeStatus([FromRoute] int id, [FromRoute] int monsterId)
     {
         if (id <= 0)

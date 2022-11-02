@@ -35,7 +35,6 @@ public class HeroesController : ControllerBase
         return Ok(hero);
     }
 
-    // TODO: authorize actions.
     [HttpPost]
     [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Create([FromBody] Hero hero)

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Security.Policies;
 
 namespace OnePunchApi.Controllers;
 
@@ -34,9 +35,8 @@ public class MonstersController : ControllerBase
         return Ok(monster);
     }
 
-    // TODO: Authorize Actions
     [HttpPost]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Create([FromBody] Monster monster)
     {
         if (monster.Id != 0)
@@ -48,7 +48,7 @@ public class MonstersController : ControllerBase
     }
 
     [HttpPut("{id:int}/disaster")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult UpdateDisaster([FromRoute] int id, [FromBody] DisasterLevel disasterLevel)
     {
         var monster = _repo.Get(id);
@@ -61,7 +61,7 @@ public class MonstersController : ControllerBase
     }
 
     [HttpDelete("{id:int}/status")]
-    [Authorize]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var monster = _repo.Get(id);

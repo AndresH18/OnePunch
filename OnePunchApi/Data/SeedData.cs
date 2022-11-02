@@ -61,6 +61,15 @@ public static class SeedData
                 Username = "ad_admin",
                 Password = "AD123",
                 Role = Role.Admin,
+            },
+            new User
+            {
+                Id = 2,
+                Name = "Andres David",
+                Username = "ad_hero",
+                Password = "hero123",
+                Role = Role.Hero,
+                Rank = Rank.S,
             });
     }
 }

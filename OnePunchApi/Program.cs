@@ -3,12 +3,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
+using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Policies.Requirements;
 using OnePunchApi.Security.Models;
 using OnePunchApi.Security.Policies;
 using OnePunchApi.Security.Policies.Handlers;
-using OnePunchApi.Security.Policies.Requirements;
 using OnePunchApi.Services;
+using RoleRequirement = OnePunchApi.Security.Policies.Requirements.RoleRequirement;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<HeroAssociationDb>();
 
 builder.Services.AddScoped<IAuthorizationHandler, RoleHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, RankHandler>();
 
 builder.Services.AddScoped<UserManager>();
 
@@ -43,14 +46,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization(options =>
 {
-    // options.AddPolicy("IsAdmin",
-    //     policyBuilder => { policyBuilder.AddRequirements(new AdminHandler()); });
-
-    // options.AddPolicy("Admin",
-    //     policyBuilder => { policyBuilder.AddRequirements(new RoleRequirement("Administrator")); });
-
     options.AddPolicy(PolicyConstants.Admin,
         policy => { policy.AddRequirements(new RoleRequirement(Role.Admin)); });
+
+    options.AddPolicy(PolicyConstants.HeroS,
+        policy =>
+        {
+            policy.AddRequirements(
+                new RoleRequirement(Role.Hero),
+                new RankRequirement(Rank.S));
+        });
 });
 
 
@@ -79,15 +84,15 @@ if (app.Environment.IsDevelopment())
 }
 
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
-using (var scope = scopeFactory.CreateScope())
-{
-    using var db = scope.ServiceProvider.GetRequiredService<HeroAssociationDb>();
-    db.Database.EnsureDeleted();
-    if (db.Database.EnsureCreated())
-    {
-        SeedData.Initialize(db);
-    }
-}
+// using (var scope = scopeFactory.CreateScope())
+// {
+//     using var db = scope.ServiceProvider.GetRequiredService<HeroAssociationDb>();
+//     db.Database.EnsureDeleted();
+//     if (db.Database.EnsureCreated())
+//     {
+//         SeedData.Initialize(db);
+//     }
+// }
 
 app.UseHttpsRedirection();
 
