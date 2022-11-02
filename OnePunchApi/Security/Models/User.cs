@@ -1,13 +1,20 @@
-﻿namespace OnePunchApi.Security.Models;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
+using OnePunchApi.Data.Model;
 
+namespace OnePunchApi.Security.Models;
+
+[Index(nameof(Username), IsUnique = true)]
 public class User
 {
-    public string Username { get; set; } = default!;
-    public string Password { get; set; } = default!;
-    public string EmailAddress { get; set; } = default!;
-    public string Role { get; set; } = default!;
-    public string Surname { get; set; } = default!;
-    public string GivenName { get; set; } = default!;
-    
-    public DateTime DateOfBirth { get; set; }
+    [Key] public int Id { get; set; }
+
+    [Required] public string Name { get; set; } = string.Empty;
+
+    [Required] public string Username { get; set; } = string.Empty;
+    [Required] public string Password { get; set; } = string.Empty;
+
+    public Role Role { get; set; } = Role.Civil;
+
+    public Rank? Rank { get; set; } = null;
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 
@@ -7,6 +8,7 @@ namespace OnePunchApi.Controllers;
 [ApiController]
 [Route("/monster-cells")]
 // [Authorize(Policy = "S-Class-Hero")]
+[Authorize]
 public class MonsterCellController : ControllerBase
 {
     private readonly MonsterCellRepository _repo;
@@ -55,7 +57,7 @@ public class MonsterCellController : ControllerBase
             return BadRequest();
         }
 
-        return CreatedAtAction(nameof(Register), new {monsterCell.Id}, monsterCell);
+        return CreatedAtAction(nameof(Register), new { monsterCell.Id }, monsterCell);
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]

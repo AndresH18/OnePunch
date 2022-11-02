@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 
@@ -33,6 +34,7 @@ public class SponsorsController : ControllerBase
 
     // TODO: Authorize Actions
     [HttpPost]
+    [Authorize]
     public IActionResult Create([FromBody] Sponsor sponsor)
     {
         if (sponsor.Id != 0)
@@ -43,6 +45,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/status")]
+    [Authorize]
     public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var sponsor = _repo.Get(id);
@@ -55,6 +58,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/hero/{heroId:int}")]
+    [Authorize]
     public IActionResult AddHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
@@ -69,6 +73,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/hero/{heroId:int}")]
+    [Authorize]
     public IActionResult RemoveHero([FromRoute] int id, [FromRoute] int heroId)
     {
         var sponsor = _repo.Get(id);
@@ -80,6 +85,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]
+    [Authorize]
     public IActionResult AddMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);
@@ -94,6 +100,7 @@ public class SponsorsController : ControllerBase
     }
 
     [HttpDelete("{id:int}/monster/{monsterId:int}")]
+    [Authorize]
     public IActionResult RemoveMonster([FromRoute] int id, [FromRoute] int monsterId)
     {
         var sponsor = _repo.Get(id);

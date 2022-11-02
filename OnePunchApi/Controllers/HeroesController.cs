@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
+using OnePunchApi.Security.Policies;
 
 namespace OnePunchApi.Controllers;
 
 [ApiController]
 [Route("heroes")]
-[Route("/")]
 public class HeroesController : ControllerBase
 {
     private readonly HeroesRepository _repo;
@@ -17,6 +18,8 @@ public class HeroesController : ControllerBase
     }
 
     [HttpGet]
+    [Route("/")]
+    [Route("../")]
     public ActionResult<IEnumerable<Hero>> GetAll()
     {
         return Ok(_repo.GetAll());
@@ -34,6 +37,7 @@ public class HeroesController : ControllerBase
 
     // TODO: authorize actions.
     [HttpPost]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Create([FromBody] Hero hero)
     {
         if (hero.Id != 0)
@@ -41,10 +45,11 @@ public class HeroesController : ControllerBase
 
         _repo.Create(hero);
 
-        return CreatedAtAction(nameof(Create), new { hero.Id }, hero);
+        return CreatedAtAction(nameof(Create), new {hero.Id}, hero);
     }
 
     [HttpPut("{id:int}/rank")]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult UpdateRank([FromRoute] int id, [FromBody] Rank rank)
     {
         var hero = _repo.Get(id);
@@ -62,6 +67,7 @@ public class HeroesController : ControllerBase
     //     
     // }
     [HttpDelete("{id:int}/status")]
+    [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult ChangeStatus([FromRoute] int id, [FromBody] Status status)
     {
         var hero = _repo.Get(id);

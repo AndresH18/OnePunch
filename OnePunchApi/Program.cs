@@ -3,18 +3,21 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
-using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
-using OnePunchApi.Policies.Handlers;
-using OnePunchApi.Policies.Requirements;
+using OnePunchApi.Security.Models;
+using OnePunchApi.Security.Policies;
+using OnePunchApi.Security.Policies.Handlers;
+using OnePunchApi.Security.Policies.Requirements;
+using OnePunchApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddDbContext<HeroAssociationDb>();
 
-builder.Services.AddSingleton<IAuthorizationHandler, RoleHandler>();
-builder.Services.AddSingleton<IAuthorizationHandler, AdminHandler>();
+builder.Services.AddScoped<IAuthorizationHandler, RoleHandler>();
+
+builder.Services.AddScoped<UserManager>();
 
 builder.Services.AddScoped<HeroesRepository>();
 builder.Services.AddScoped<MonsterRepository>();
@@ -31,6 +34,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuer = true,
             ValidateAudience = true,
             ValidateIssuerSigningKey = true,
+            ValidateLifetime = true,
             ValidIssuer = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])),
@@ -41,8 +45,12 @@ builder.Services.AddAuthorization(options =>
 {
     // options.AddPolicy("IsAdmin",
     //     policyBuilder => { policyBuilder.AddRequirements(new AdminHandler()); });
-    options.AddPolicy("Admin",
-        policyBuilder => { policyBuilder.AddRequirements(new RoleRequirement("Administrator")); });
+
+    // options.AddPolicy("Admin",
+    //     policyBuilder => { policyBuilder.AddRequirements(new RoleRequirement("Administrator")); });
+
+    options.AddPolicy(PolicyConstants.Admin,
+        policy => { policy.AddRequirements(new RoleRequirement(Role.Admin)); });
 });
 
 
