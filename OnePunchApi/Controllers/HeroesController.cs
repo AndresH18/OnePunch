@@ -18,8 +18,7 @@ public class HeroesController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/")]
-    [Route("../")]
+    [HttpGet("/")]
     public ActionResult<IEnumerable<Hero>> GetAll()
     {
         return Ok(_repo.GetAll());

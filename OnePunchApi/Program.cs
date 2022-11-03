@@ -69,6 +69,8 @@ builder.Services.ConfigureSwaggerGen(setup =>
         Version = "V1"
     });
 });
+
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -101,5 +103,9 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapControllerRoute(
+    "Heroes",
+    pattern: "{controller=Heroes}/{action=GetAll}");
 
 app.Run();
