@@ -1,4 +1,4 @@
-﻿using OnePunchApi.Data.Model;
+﻿using Shared.Data.Model;
 
 namespace OnePunchApi.Data.Repository;
 

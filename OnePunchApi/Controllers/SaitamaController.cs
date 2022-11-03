@@ -1,7 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using OnePunchApi.Data.Model;
+﻿using Microsoft.AspNetCore.Mvc;
 using OnePunchApi.Data.Repository;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Controllers;
 

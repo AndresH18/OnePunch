@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OnePunchApi.Data.Model;
+﻿using Shared.Data.Model;
 
 namespace OnePunchApi.Data.Repository;
 

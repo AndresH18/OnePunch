@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
-using OnePunchApi.Data.Model;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Security.Models;
 

@@ -1,10 +1,8 @@
-﻿using System.Collections.Specialized;
-using System.ComponentModel;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 using OnePunchApi.Security.Policies;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Controllers;
 

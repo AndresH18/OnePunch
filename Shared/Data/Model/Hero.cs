@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 
-namespace OnePunchApi.Data.Model;
+namespace Shared.Data.Model;
 
 public class Hero : IModel
 {

@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Data.Model;
+﻿namespace Shared.Data.Model;
 
 /// <summary>
 /// Designation given by the Hero's Association to rank threats by strength and scope of destruction.

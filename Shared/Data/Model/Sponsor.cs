@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace OnePunchApi.Data.Model;
+namespace Shared.Data.Model;
 
 public class Sponsor : IModel
 {

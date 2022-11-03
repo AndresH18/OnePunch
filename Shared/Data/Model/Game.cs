@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OnePunchApi.Data.Model;
+namespace Shared.Data.Model;
 
 public class Game
 {

@@ -5,7 +5,7 @@ using OnePunchApi.Data;
 using OnePunchApi.Security.Models;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
-using OnePunchApi.Data.Model;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Services;
 

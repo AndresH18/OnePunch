@@ -1,5 +1,5 @@
-﻿using OnePunchApi.Data.Model;
-using OnePunchApi.Security.Models;
+﻿using OnePunchApi.Security.Models;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Data;
 

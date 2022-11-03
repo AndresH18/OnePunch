@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using OnePunchApi.Data.Model;
 using OnePunchApi.Security.Models;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Data;
 

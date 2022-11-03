@@ -1,6 +1,4 @@
-﻿using OnePunchApi.Security.Models;
-
-namespace OnePunchApi.Security.Policies;
+﻿namespace OnePunchApi.Security.Policies;
 
 public static class PolicyConstants
 {

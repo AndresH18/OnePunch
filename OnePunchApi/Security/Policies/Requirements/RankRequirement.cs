@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using OnePunchApi.Data.Model;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Security.Policies.Requirements;
 

@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Data.Model;
+﻿namespace Shared.Data.Model;
 
 public enum Rank
 {

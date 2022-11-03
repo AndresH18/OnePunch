@@ -3,13 +3,13 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
-using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
 using OnePunchApi.Security.Models;
 using OnePunchApi.Security.Policies;
 using OnePunchApi.Security.Policies.Handlers;
 using OnePunchApi.Security.Policies.Requirements;
 using OnePunchApi.Services;
+using Shared.Data.Model;
 using RoleRequirement = OnePunchApi.Security.Policies.Requirements.RoleRequirement;
 
 var builder = WebApplication.CreateBuilder(args);
