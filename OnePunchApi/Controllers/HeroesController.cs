@@ -25,6 +25,15 @@ public class HeroesController : ControllerBase
         return Ok(_repo.GetAll());
     }
 
+    [HttpGet("top")]
+    public ActionResult<List<Hero>> GetTop([FromQuery] int limit = 10)
+    {
+        if (limit <= 0)
+            return BadRequest();
+
+        return Ok(_repo.GetTop(limit));
+    }
+
     [HttpGet("{id:int}")]
     public ActionResult<Hero?> Get([FromRoute] int id)
     {

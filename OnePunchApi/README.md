@@ -3,25 +3,24 @@
 ## TODO
 
 1. [x] Se quiere saber los patrocinadores de la agencia, ya que sin ellos es imposible tener los heroes, los
-   patrocinadores
-   tienen convenio con varios heroes y a la vez con monstruos para estar seguros.
+   patrocinadores tienen convenio con varios heroes y a la vez con monstruos para estar seguros.
 2. [x] Se quiere saber los heroes que componen la organización, su rango, su habilidad, monstruos con quien han
-   combatido,
-   resultado de la batalla, fans, patrocinadores, lugar de residencia y numero de teléfono, ~~un héroe puede ser fan de
-   otros heroes y también patrocinador~~.
+   combatido, resultado de la batalla, fans, patrocinadores, lugar de residencia y numero de teléfono, ~~un héroe puede
+   ser fan de otros heroes y también patrocinador~~.
 3. [x] Se quiere saber los monstrous que han atacado a la ciudad, su nivel de amenaza y en caso de que participaran en
-   una
-   lucha se quiere saber el resultado y el héroe involucrado, un monstruo puede estar involucrado en muchas luchas con
-   muchos heroes.
+   una lucha se quiere saber el resultado y el héroe involucrado, un monstruo puede estar involucrado en muchas luchas
+   con muchos heroes.
 4. [x] Se conoce la existencia de las celulas mounstrificas las cuales convierten a los humanos, la asociación
-   preocupada por
-   esta situación quiere tener toda la información acerca de las celulas y que monstruo o héroe las posee.
-5. [ ] Se quiere hacer una lista de los 10 heroes mas fuertes para enviarles un premio por labor en la asociación.
+   preocupada por esta situación quiere tener toda la información acerca de las celulas y que monstruo o héroe las
+   posee.
+5. [X] Se quiere hacer una lista de los 10 heroes mas fuertes para enviarles un premio por labor en la asociación.
 6. [ ] El rest-api debe estar desplegado en la nube en el servidor de su preferencia, el lenguaje de programación para
-   hacer
-   esto es libre.
+   hacer esto es libre.
 7. [ ] Saitama Game-HUB
-   - Saitama Sensei es un aficionado a los video juegos y a la comida rapida. Dado esto, Saitama quiere tener una parte en la aplicacion que le lleve un control de sus videjuegos favoritos y sus partidos contra su principal rival King, y que le diga lo que ha comido en el último mes. Y que heroes estan en su casa comiendo y jugando, como Genos, Fubuki, King y Silver Bang para mandarles una cuenta por que gastan su comida.
+    - Saitama Sensei es un aficionado a los video juegos y a la comida rapida. Dado esto, Saitama quiere tener una parte
+      en la aplicacion que le lleve un control de sus videjuegos favoritos y sus partidos contra su principal rival
+      King, y que le diga lo que ha comido en el último mes. Y que heroes estan en su casa comiendo y jugando, como
+      Genos, Fubuki, King y Silver Bang para mandarles una cuenta por que gastan su comida.
 
 ## Check this Reources
 

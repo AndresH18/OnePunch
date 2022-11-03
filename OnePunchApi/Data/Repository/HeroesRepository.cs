@@ -24,10 +24,21 @@ public class HeroesRepository
         return _db.Heroes.ToList();
     }
 
+    public IEnumerable<Hero> GetTop(int amount)
+    {
+        if (amount > 0)
+        {
+            return _db.Heroes.OrderBy(h => h.Rank).ThenBy(h => h.Id).Take(amount);
+        }
+
+        return Array.Empty<Hero>();
+    }
+
     public Hero? Get(int id)
     {
         return _db.Heroes.FirstOrDefault(h => h.Id == id);
     }
+
 
     public void ChangeRank(Hero hero, Rank rank)
     {
