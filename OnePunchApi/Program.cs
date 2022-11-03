@@ -49,14 +49,13 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy(PolicyConstants.Admin,
         policy => { policy.AddRequirements(new RoleRequirement(Role.Admin)); });
 
-    options.AddPolicy(PolicyConstants.HeroS,
-        policy =>
-        {
-            policy.AddRequirements(
-                new RoleRequirement(Role.Hero),
-                new RankRequirement(Rank.S)
-            );
-        });
+    options.AddPolicy(PolicyConstants.HeroS, policy =>
+    {
+        policy.AddRequirements(
+            new RoleRequirement(Role.Hero),
+            new RankRequirement(Rank.S)
+        );
+    });
 });
 
 
