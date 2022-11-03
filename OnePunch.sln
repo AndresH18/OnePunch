@@ -1,8 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnePunchApi", "OnePunchApi\OnePunchApi.csproj", "{129BA70E-3058-4F12-B639-B33BF0B51631}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnePunchApi", "OnePunchApi\OnePunchApi.csproj", "{129BA70E-3058-4F12-B639-B33BF0B51631}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{7F00517A-3F0A-4DAD-9D2B-A7C6BD47512A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{7F00517A-3F0A-4DAD-9D2B-A7C6BD47512A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{5FD5DABA-6D47-4EC4-986A-C4E27FE13F02}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,5 +23,15 @@ Global
 		{7F00517A-3F0A-4DAD-9D2B-A7C6BD47512A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F00517A-3F0A-4DAD-9D2B-A7C6BD47512A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F00517A-3F0A-4DAD-9D2B-A7C6BD47512A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FD5DABA-6D47-4EC4-986A-C4E27FE13F02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FD5DABA-6D47-4EC4-986A-C4E27FE13F02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FD5DABA-6D47-4EC4-986A-C4E27FE13F02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FD5DABA-6D47-4EC4-986A-C4E27FE13F02}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A3FCC8E6-46EB-472E-818E-85BA124789BF}
 	EndGlobalSection
 EndGlobal
