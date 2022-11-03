@@ -8,7 +8,6 @@ namespace OnePunchApi.Controllers;
 
 [ApiController]
 [Route("/monster-cells")]
-// [Authorize(Policy = "S-Class-Hero")]
 [Authorize(Policy = PolicyConstants.HeroS)]
 public class MonsterCellController : ControllerBase
 {
@@ -37,7 +36,6 @@ public class MonsterCellController : ControllerBase
 
     [HttpPost]
     [HttpPost("monster/{monsterId:int}")]
-    // [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult Register([FromBody] MonsterCell monsterCell,
         [FromRoute] int monsterId = 0)
     {
@@ -62,7 +60,6 @@ public class MonsterCellController : ControllerBase
     }
 
     [HttpPut("{id:int}/monster/{monsterId:int}")]
-    // [Authorize(Policy = PolicyConstants.Admin)]
     public IActionResult ChangeStatus([FromRoute] int id, [FromRoute] int monsterId)
     {
         if (id <= 0)

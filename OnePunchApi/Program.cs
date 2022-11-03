@@ -5,10 +5,10 @@ using Microsoft.IdentityModel.Tokens;
 using OnePunchApi.Data;
 using OnePunchApi.Data.Model;
 using OnePunchApi.Data.Repository;
-using OnePunchApi.Policies.Requirements;
 using OnePunchApi.Security.Models;
 using OnePunchApi.Security.Policies;
 using OnePunchApi.Security.Policies.Handlers;
+using OnePunchApi.Security.Policies.Requirements;
 using OnePunchApi.Services;
 using RoleRequirement = OnePunchApi.Security.Policies.Requirements.RoleRequirement;
 
@@ -54,7 +54,8 @@ builder.Services.AddAuthorization(options =>
         {
             policy.AddRequirements(
                 new RoleRequirement(Role.Hero),
-                new RankRequirement(Rank.S));
+                new RankRequirement(Rank.S)
+            );
         });
 });
 
@@ -84,15 +85,16 @@ if (app.Environment.IsDevelopment())
 }
 
 var scopeFactory = app.Services.GetRequiredService<IServiceScopeFactory>();
-// using (var scope = scopeFactory.CreateScope())
-// {
-//     using var db = scope.ServiceProvider.GetRequiredService<HeroAssociationDb>();
-//     db.Database.EnsureDeleted();
-//     if (db.Database.EnsureCreated())
-//     {
-//         SeedData.Initialize(db);
-//     }
-// }
+// TODO: Delete when publishing
+using (var scope = scopeFactory.CreateScope())
+{
+    using var db = scope.ServiceProvider.GetRequiredService<HeroAssociationDb>();
+    db.Database.EnsureDeleted();
+    if (db.Database.EnsureCreated())
+    {
+        SeedData.Initialize(db);
+    }
+}
 
 app.UseHttpsRedirection();
 
