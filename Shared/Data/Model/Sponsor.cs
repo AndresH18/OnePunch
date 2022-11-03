@@ -14,9 +14,9 @@ public class Sponsor : IModel
 
     #region Relations
 
-    [JsonIgnore] public virtual List<Hero> Heroes { get; set; } = new();
+    public virtual List<Hero> Heroes { get; set; } = new();
 
-    [JsonIgnore] public virtual List<Monster> Monsters { get; set; } = new();
+    public virtual List<Monster> Monsters { get; set; } = new();
 
     #endregion
 }

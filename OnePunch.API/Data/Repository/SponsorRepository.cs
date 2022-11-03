@@ -1,4 +1,5 @@
-﻿using Shared.Data.Model;
+﻿using Microsoft.EntityFrameworkCore;
+using Shared.Data.Model;
 
 namespace OnePunchApi.Data.Repository;
 
@@ -20,12 +21,17 @@ public class SponsorRepository
 
     public IEnumerable<Sponsor> GetAll()
     {
-        return _db.Sponsors.ToList();
+        return _db.Sponsors
+        .Include(s => s.Monsters)
+        .Include(s => s.Heroes)
+        .ToList();
     }
 
     public Sponsor? Get(int id)
     {
-        return _db.Sponsors.FirstOrDefault(s => s.Id == id);
+        return _db.Sponsors
+        .Include(s => s.Monsters)
+        .Include(s => s.Heroes).FirstOrDefault(s => s.Id == id);
     }
 
     public void ChangeStatus(Sponsor sponsor, Status status)
