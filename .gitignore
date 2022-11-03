@@ -10,3 +10,4 @@ riderModule.iml
 /OnePunchApi/heroes.db
 /OnePunchApi/Properties
 /.vscode
+*.pubxml

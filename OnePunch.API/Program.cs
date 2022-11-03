@@ -104,8 +104,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapControllerRoute(
-    "Heroes",
-    pattern: "{controller=Heroes}/{action=GetAll}");
-
 app.Run();

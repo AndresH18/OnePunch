@@ -35,16 +35,27 @@ public class MonsterCellController : ControllerBase
     }
 
     [HttpPost]
-    [HttpPost("monster/{monsterId:int}")]
-    public IActionResult Register([FromBody] MonsterCell monsterCell,
-        [FromRoute] int monsterId = 0)
+    public IActionResult Register([FromBody] MonsterCell monsterCell)
+    {
+        if (monsterCell.Id != 0)
+            return BadRequest();
+
+        monsterCell.Monster = null;
+        monsterCell.MonsterId = 0;
+
+        _repo.Register(monsterCell);
+
+        return CreatedAtAction(nameof(Register), new { monsterCell.Id }, monsterCell);
+    }
+
+    [HttpPost("monster/{monsterId:int:min(1)}")]
+    public IActionResult Register([FromBody] MonsterCell monsterCell, [FromRoute] int monsterId)
     {
         if (monsterCell.Id != 0)
             return BadRequest();
 
         if (monsterId >= 0)
         {
-
             var r = _repo.Register(monsterCell, monsterId);
             if (r is null)
             {
