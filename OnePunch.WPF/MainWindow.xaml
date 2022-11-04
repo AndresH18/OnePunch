@@ -5,8 +5,73 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OnePunch.WPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Height="450" Width="800"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=Self}}"
+        Title="MainWindow">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <DockPanel HorizontalAlignment="Stretch" />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
 
-    </Grid>
+            <MenuItem Header="Heroes">
+                <MenuItem Header="View Heroes"
+                          Tag="view-heroes" />
+                <MenuItem Header="Create"
+                          Tag="create-hero"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Update Rank"
+                          Tag="update-hero-rank"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Change Status"
+                          Tag="change-hero-status"
+                          Visibility="{Binding Path=AdminVisibility}" />
+            </MenuItem>
+
+            <MenuItem Header="Monsters">
+                <MenuItem Header="View Monsters"
+                          Tag="view-monsters"
+                          Click="MenuItem_OnClick"/>
+                <MenuItem Header="Create"
+                          Tag="create-monster"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Update Disaster"
+                          Tag="update-monster-disaster"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Change Status"
+                          Tag="change-monster-status"
+                          Visibility="{Binding Path=AdminVisibility}" />
+            </MenuItem>
+            <MenuItem Header="Fights" />
+            <MenuItem Header="Sponsors">
+                <MenuItem Header="View Sponsors"
+                          Tag="view-sponsor" />
+                <MenuItem Header="Create Sponsor"
+                          Tag="create-sponsor"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Change Status"
+                          Tag="change-sponsor-status"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Heroes"
+                          Tag="sponsor-heroes"
+                          Visibility="{Binding Path=AdminVisibility}" />
+                <MenuItem Header="Monsters"
+                          Tag="sponsors-monsters"
+                          Visibility="{Binding Path=AdminVisibility}" />
+            </MenuItem>
+            <MenuItem Header="Monster Cells"
+                      Visibility="{Binding HeroSVisibility}">
+                <MenuItem Header="HIII"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Saitama-sensei"
+                      Visibility="{Binding SaitamaVisibility}" />
+
+            <MenuItem Header="Login" HorizontalAlignment="Right" />
+        </Menu>
+
+        <Frame x:Name="Frame" />
+
+    </DockPanel>
 </Window>

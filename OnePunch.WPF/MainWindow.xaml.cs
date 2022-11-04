@@ -12,17 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Shared.Data.Model;
 
-namespace OnePunch.WPF
+namespace OnePunch.WPF;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public Visibility AdminVisibility { get; private set; } = Visibility.Visible;
+    public Visibility HeroSVisibility { get; private set; } = Visibility.Visible;
+    public Visibility SaitamaVisibility { get; private set; } = Visibility.Visible;
+
+    private Type? _selectedType = default;
+    private readonly Dictionary<string, string> _navigationDictionary = new();
+
+    public MainWindow()
     {
-        public MainWindow()
+        InitializeComponent();
+    }
+
+    private void MenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        if (sender is MenuItem {Tag: string tag})
         {
-            InitializeComponent();
         }
+    }
+
+    void SHSHHS()
+    {
+        Hero? hero = (Hero?) Activator.CreateInstance(typeof(Hero));
     }
 }
