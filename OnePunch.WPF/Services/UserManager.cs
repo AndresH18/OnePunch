@@ -42,6 +42,12 @@ public class UserManager
         }
     }
 
+    public void SignOut()
+    {
+        AuthenticationToken = null;
+        Username = null;
+    }
+
     private UserLogin CreateUserLogin(string username, string password)
     {
         return new UserLogin {Username = username, Password = password};

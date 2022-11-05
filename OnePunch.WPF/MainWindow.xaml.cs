@@ -69,17 +69,30 @@ public partial class MainWindow : Window
     private void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
         var loginWindow = _services.GetRequiredService<LoginWindow>();
-
+        
         var result = loginWindow.ShowDialog();
-
+        
         if (result == true)
         {
-
+            AccountMenuItem.Header = FormatUnderscore(_userManager.Username!);
+            LoginMenuItem.Visibility = Visibility.Collapsed;
+            LogoutMenuItem.Visibility = Visibility.Visible;
         }
     }
 
     private void LogoutMenuItem_OnClick(object sender, RoutedEventArgs e)
     {
-        
+        _userManager.SignOut();
+
+        AccountMenuItem.Header = "Account";
+        LoginMenuItem.Visibility = Visibility.Visible;
+        LogoutMenuItem.Visibility = Visibility.Collapsed;
+    }
+
+    // TODO: create events for login and logout
+
+    private string FormatUnderscore(string s)
+    {
+        return s.Replace("_", "__");
     }
 }

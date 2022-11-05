@@ -27,7 +27,7 @@ public partial class App : Application
     public new static App Current => (App) Application.Current;
 
 
-    public string Host => _configuration["Hosts:remote"];
+    public string Host => _configuration["Hosts:local"];
     public IServiceProvider Services { get; }
     // public IConfiguration Configuration { get; }
 

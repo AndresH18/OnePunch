@@ -69,7 +69,8 @@
             <MenuItem Header="Saitama-sensei"
                       Visibility="{Binding SaitamaVisibility}" />
 
-            <MenuItem Header="Account"
+            <MenuItem x:Name="AccountMenuItem"
+                      Header="Account"
                       HorizontalAlignment="Right">
                 <MenuItem x:Name="LoginMenuItem"
                           Header="Login"
