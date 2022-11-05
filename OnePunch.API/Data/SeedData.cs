@@ -1,7 +1,7 @@
-﻿using OnePunchApi.Security.Models;
+﻿using OnePunch.Api.Security.Models;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Data;
+namespace OnePunch.Api.Data;
 
 public static class SeedData
 {

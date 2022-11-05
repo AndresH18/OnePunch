@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using OnePunchApi.Data.Repository;
+using OnePunch.Api.Data.Repository;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Controllers;
+namespace OnePunch.Api.Controllers;
 
 [ApiController]
 [Route("fights")]

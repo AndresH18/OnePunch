@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace OnePunchApi.Controllers;
+namespace OnePunch.Api.Controllers;
 
 [ApiController]
 [Route("[controller]")]

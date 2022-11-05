@@ -1,10 +1,11 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnePunchApi.Security.Models;
-using OnePunchApi.Services;
+using OnePunch.Api.Security.Models;
+using OnePunch.Api.Services;
+using User = OnePunch.Api.Security.User;
 
-namespace OnePunchApi.Controllers;
+namespace OnePunch.Api.Controllers;
 
 [ApiController]
 [Route("login")]
@@ -31,14 +32,14 @@ public class LoginController : ControllerBase
     }
 
 
-    private Security.User? GetCurrentUser()
+    private User? GetCurrentUser()
     {
         if (HttpContext.User.Identity is ClaimsIdentity identity)
         {
             var userClaims = identity.Claims;
             // creating list to avoid IEnumerable fall
             var claims = userClaims.ToList();
-            return new Security.User()
+            return new User()
             {
                 Username = claims.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value!,
                 EmailAddress = claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value!,

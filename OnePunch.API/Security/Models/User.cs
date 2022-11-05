@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Security.Models;
+namespace OnePunch.Api.Security.Models;
 
 [Index(nameof(Username), IsUnique = true)]
 public class User

@@ -1,13 +1,13 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
-using OnePunchApi.Data;
-using OnePunchApi.Security.Models;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using OnePunch.Api.Data;
+using OnePunch.Api.Security.Models;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Services;
+namespace OnePunch.Api.Services;
 
 public class UserManager
 {

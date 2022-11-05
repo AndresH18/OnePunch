@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Security.Models;
+﻿namespace OnePunch.Api.Security.Models;
 
 public enum Clearance
 {

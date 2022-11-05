@@ -1,4 +1,4 @@
-namespace OnePunchApi;
+namespace OnePunch.Api;
 
 public class WeatherForecast
 {

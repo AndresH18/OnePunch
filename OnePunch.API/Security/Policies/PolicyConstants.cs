@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Security.Policies;
+﻿namespace OnePunch.Api.Security.Policies;
 
 public static class PolicyConstants
 {

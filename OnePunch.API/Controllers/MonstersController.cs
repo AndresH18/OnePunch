@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using OnePunchApi.Data.Repository;
-using OnePunchApi.Security.Policies;
+using OnePunch.Api.Data.Repository;
+using OnePunch.Api.Security.Policies;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Controllers;
+namespace OnePunch.Api.Controllers;
 
 [ApiController]
 [Route("monsters")]
