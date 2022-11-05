@@ -45,6 +45,8 @@ public partial class App : Application
         /* Add services here */
         var services = new ServiceCollection();
 
+        services.AddNavDestinations();
+
         return services.BuildServiceProvider();
     }
 
@@ -55,5 +57,13 @@ public partial class App : Application
             .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
 
         return builder.Build();
+    }
+}
+
+public static class ServicesExtensions
+{
+    public static void AddNavDestinations(this ServiceCollection serviceCollection)
+    {
+        // TODO: add navigation destinations here, maybe as transient
     }
 }
