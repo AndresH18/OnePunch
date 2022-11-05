@@ -29,7 +29,6 @@ public class UserManager
         var user = _db.Users
             .FirstOrDefault(u => u.Username.Equals(login.Username)
                                  && u.Password.Equals(login.Password));
-        _logger.LogInformation($"Authenticated user: {login.Username}");
         return user;
     }
 

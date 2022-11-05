@@ -31,6 +31,7 @@
                Height="200"
                Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" />
 
+
         <Label
             Content="Username"
             Grid.Row="1"
@@ -59,10 +60,19 @@
         <Button
             x:Name="LoginButton"
             IsEnabled="False"
-            Content="Login"
             Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Click="LoginButton_OnClick" />
+            HorizontalContentAlignment="Stretch"
+            Click="LoginButton_OnClick">
+            <Button.Content>
+                <Grid>
+                    <ProgressBar x:Name="ProgressBar"
+                                 IsIndeterminate="True"
+                                 Visibility="Hidden"/>
+                    <TextBlock Text="Login" HorizontalAlignment="Center" />
+                </Grid>
+            </Button.Content>
+        </Button>
     </Grid>
 </Window>
