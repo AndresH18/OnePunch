@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
+using OnePunch.WPF.Services;
 using OnePunch.WPF.View.Hero;
 using OnePunch.WPF.View.Login;
 using Shared.Data.Model;
@@ -29,6 +30,8 @@ public partial class MainWindow : Window
     public Visibility HeroSVisibility { get; private set; } = Visibility.Visible;
     public Visibility SaitamaVisibility { get; private set; } = Visibility.Visible;
 
+    private readonly UserManager _userManager;
+
     private readonly IServiceProvider _services;
 
     private readonly Dictionary<string, Type> _navigationDictionary = new()
@@ -42,6 +45,8 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         _services = App.Current.Services;
+
+        _userManager = _services.GetRequiredService<UserManager>();
     }
 
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
@@ -67,5 +72,14 @@ public partial class MainWindow : Window
 
         var result = loginWindow.ShowDialog();
 
+        if (result == true)
+        {
+
+        }
+    }
+
+    private void LogoutMenuItem_OnClick(object sender, RoutedEventArgs e)
+    {
+        
     }
 }

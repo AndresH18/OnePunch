@@ -22,10 +22,9 @@ public class HeroesViewModel
 
     private async void LoadData()
     {
-        // TODO: get data from back
-        var client = new HttpClient()
+        var client = new HttpClient
         {
-            BaseAddress = new Uri("https://onepunchapi.azurewebsites.net")
+            BaseAddress = new Uri(App.Current.Host)
         };
         var heroes = await client.GetFromJsonAsync<IEnumerable<Hero>>("heroes");
         if (heroes != null)

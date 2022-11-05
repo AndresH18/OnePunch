@@ -19,7 +19,7 @@
             <MenuItem Header="Heroes">
                 <MenuItem Header="View Heroes"
                           Tag="view-heroes"
-                          Click="MenuItem_OnClick"/>
+                          Click="MenuItem_OnClick" />
                 <MenuItem Header="Create"
                           Tag="create-hero"
                           Visibility="{Binding Path=AdminVisibility}" />
@@ -34,7 +34,7 @@
             <MenuItem Header="Monsters">
                 <MenuItem Header="View Monsters"
                           Tag="view-monsters"
-                          Click="MenuItem_OnClick"/>
+                          Click="MenuItem_OnClick" />
                 <MenuItem Header="Create"
                           Tag="create-monster"
                           Visibility="{Binding Path=AdminVisibility}" />
@@ -69,7 +69,15 @@
             <MenuItem Header="Saitama-sensei"
                       Visibility="{Binding SaitamaVisibility}" />
 
-            <MenuItem Header="Login" HorizontalAlignment="Right" Click="LoginButton_OnClick" />
+            <MenuItem Header="Account"
+                      HorizontalAlignment="Right">
+                <MenuItem x:Name="LoginMenuItem"
+                          Header="Login"
+                          Click="LoginButton_OnClick" />
+                <MenuItem x:Name="LogoutMenuItem"
+                          Header="Log out"
+                          Click="LogoutMenuItem_OnClick" />
+            </MenuItem>
         </Menu>
 
         <Frame x:Name="Frame" />

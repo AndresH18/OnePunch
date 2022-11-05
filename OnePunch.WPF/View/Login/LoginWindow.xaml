@@ -36,7 +36,9 @@
             Grid.Row="1"
             Grid.Column="0" />
         <TextBox
+            x:Name="UsernameBox"
             TextChanged="UsernameBox_OnTextChanged"
+            KeyDown="TextField_OnKeyDown"
             VerticalContentAlignment="Center"
             Grid.Row="1"
             Grid.Column="1" />
@@ -46,17 +48,21 @@
             Grid.Row="2"
             Grid.Column="0" />
         <PasswordBox
+            x:Name="PasswordBox"
             PasswordChanged="PasswordBox_OnPasswordChanged"
+            KeyDown="TextField_OnKeyDown"
+            GotFocus="PasswordBox_OnGotFocus"
             VerticalContentAlignment="Center"
             Grid.Row="2"
             Grid.Column="1" />
 
         <Button
+            x:Name="LoginButton"
+            IsEnabled="False"
             Content="Login"
             Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="2"
-            Focusable="False"
-            Command="{Binding Path=LoginCommand}" />
+            Click="LoginButton_OnClick" />
     </Grid>
 </Window>
