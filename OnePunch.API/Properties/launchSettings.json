@@ -9,7 +9,7 @@
     }
   },
   "profiles": {
-    "OnePunchApi": {
+    "OnePunch.Api": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": false,
