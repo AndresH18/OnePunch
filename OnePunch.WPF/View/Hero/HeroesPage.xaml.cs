@@ -13,16 +13,17 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace OnePunch.WPF.View.Hero
+namespace OnePunch.WPF.View.Hero;
+
+/// <summary>
+/// Interaction logic for HeroesPage.xaml
+/// </summary>
+public partial class HeroesPage : Page
 {
-    /// <summary>
-    /// Interaction logic for HeroesPage.xaml
-    /// </summary>
-    public partial class HeroesPage : Page
+    public HeroesPage()
     {
-        public HeroesPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
+
+    
 }

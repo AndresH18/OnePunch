@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
+using OnePunch.WPF.View.Hero;
+using OnePunch.WPF.View.Login;
 using Shared.Data.Model;
 
 namespace OnePunch.WPF;
@@ -31,11 +33,10 @@ public partial class MainWindow : Window
 
     private readonly Dictionary<string, Type> _navigationDictionary = new()
     {
-        { "", typeof(MainWindow) },
+        {"view-heroes", typeof(HeroesPage)},
     };
 
     private Type? _selectedType = default;
-
 
     public MainWindow()
     {
@@ -45,18 +46,26 @@ public partial class MainWindow : Window
 
     private void MenuItem_OnClick(object sender, RoutedEventArgs e)
     {
-        if (sender is MenuItem { Tag: string tag })
+        if (sender is MenuItem {Tag: string tag})
         {
-            if (_navigationDictionary.TryGetValue(tag, out var navType))
+            if (_navigationDictionary.TryGetValue(tag, out var navType) && _selectedType != navType)
             {
-                // TODO: use types
-                var o = _services.GetService(navType);
-
+                _selectedType = navType;
+                var o = _services.GetService(_selectedType);
+                Frame.Navigate(o);
             }
             else
             {
-                // tag not found
+                Debug.WriteLine($"tag not found: {tag}");
             }
         }
+    }
+
+    private void LoginButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var loginWindow = _services.GetRequiredService<LoginWindow>();
+
+        var result = loginWindow.ShowDialog();
+
     }
 }
