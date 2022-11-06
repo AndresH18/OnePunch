@@ -3,7 +3,9 @@ using System.Net.Http.Json;
 using System.Net.Http;
 using System;
 using System.Threading.Tasks;
+using OnePunch.Api.Security.Models;
 using OnePunchApi.Security.Models;
+using Shared.Data.Model;
 
 namespace OnePunch.WPF.Services;
 
@@ -11,6 +13,10 @@ public class UserManager
 {
     public string? Username { get; private set; }
     public string? AuthenticationToken { get; private set; }
+
+    public Rank? Rank { get; private set; }
+    public Role Role { get; private set; }
+
 
     public async Task<bool?> Login(string username, string password)
     {

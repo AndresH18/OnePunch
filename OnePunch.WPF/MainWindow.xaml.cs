@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Microsoft.Extensions.DependencyInjection;
+using OnePunch.Api.Security.Models;
 using OnePunch.WPF.Services;
 using OnePunch.WPF.View.Hero;
 using OnePunch.WPF.View.Login;
@@ -24,11 +26,41 @@ namespace OnePunch.WPF;
 /// <summary>
 /// Interaction logic for MainWindow.xaml
 /// </summary>
-public partial class MainWindow : Window
+public partial class MainWindow : Window, INotifyPropertyChanged
 {
-    public Visibility AdminVisibility { get; private set; } = Visibility.Visible;
-    public Visibility HeroSVisibility { get; private set; } = Visibility.Visible;
-    public Visibility SaitamaVisibility { get; private set; } = Visibility.Visible;
+    public Visibility AdminVisibility
+    {
+        get => _adminVisibility;
+        private set
+        {
+            _adminVisibility = value;
+            NotifyPropertyChanged(nameof(AdminVisibility));
+        }
+    }
+
+    public Visibility HeroSVisibility
+    {
+        get => _heroSVisibility;
+        private set
+        {
+            _heroSVisibility = value;
+            NotifyPropertyChanged(nameof(HeroSVisibility));
+        }
+    }
+
+    public Visibility SaitamaVisibility
+    {
+        get => _saitamaVisibility;
+        private set
+        {
+            _saitamaVisibility = value;
+            NotifyPropertyChanged(nameof(SaitamaVisibility));
+        }
+    }
+
+    private Visibility _adminVisibility = Visibility.Visible;
+    private Visibility _heroSVisibility = Visibility.Visible;
+    private Visibility _saitamaVisibility = Visibility.Visible;
 
     private readonly UserManager _userManager;
 
@@ -69,14 +101,34 @@ public partial class MainWindow : Window
     private void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
         var loginWindow = _services.GetRequiredService<LoginWindow>();
-        
+
         var result = loginWindow.ShowDialog();
-        
+
         if (result == true)
         {
             AccountMenuItem.Header = FormatUnderscore(_userManager.Username!);
             LoginMenuItem.Visibility = Visibility.Collapsed;
             LogoutMenuItem.Visibility = Visibility.Visible;
+
+            /* // changes visibility of items based on credentials
+            switch (_userManager.Role)
+            {
+                case Role.Hero:
+                    HeroSVisibility = _userManager.Rank == Rank.S ? Visibility.Visible : Visibility.Collapsed;
+                    break;
+                case Role.Admin:
+                    AdminVisibility = Visibility.Visible;
+                    break;
+                case Role.Civil:
+                default:
+                    AdminVisibility = Visibility.Collapsed;
+                    HeroSVisibility = Visibility.Collapsed;
+                    break;
+            }
+
+            SaitamaVisibility =
+                _userManager.Username!.Equals("saitama") ? Visibility.Visible : Visibility.Collapsed;
+            */
         }
     }
 
@@ -87,12 +139,26 @@ public partial class MainWindow : Window
         AccountMenuItem.Header = "Account";
         LoginMenuItem.Visibility = Visibility.Visible;
         LogoutMenuItem.Visibility = Visibility.Collapsed;
+
+        /* // changes visibility of items based on credentials
+        AdminVisibility = Visibility.Collapsed;
+        HeroSVisibility = Visibility.Collapsed;
+        SaitamaVisibility = Visibility.Collapsed;
+        */
+
     }
 
     // TODO: create events for login and logout
 
-    private string FormatUnderscore(string s)
+    private void NotifyPropertyChanged(string name)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+    }
+
+    private static string FormatUnderscore(string s)
     {
         return s.Replace("_", "__");
     }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
 }
