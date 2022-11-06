@@ -34,7 +34,10 @@ public partial class LoginWindow : Window
     public LoginWindow(UserManager userManager)
     {
         _userManager = userManager ?? throw new ArgumentNullException(nameof(userManager));
+        
         InitializeComponent();
+
+        ProgressBar.Width = LoginButton.Width;
         Owner = App.Current.MainWindow;
     }
 
@@ -76,12 +79,12 @@ public partial class LoginWindow : Window
 
     private async void LoginButton_OnClick(object sender, RoutedEventArgs e)
     {
+        ProgressBar.Visibility = Visibility.Visible;
         LoginButton.IsEnabled = false;
-        // show login animation. (statusbar)
-
         await Login();
 
         LoginButton.IsEnabled = true;
+        ProgressBar.Visibility = Visibility.Hidden;
     }
 
     private void TextField_OnKeyDown(object sender, KeyEventArgs e)

@@ -1,19 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Threading.Tasks;
 using System.Windows;
 using Shared.Data.Model;
 
 namespace OnePunch.WPF.ViewModel;
 
-public class HeroesViewModel : INotifyPropertyChanged
+public class MonstersViewModel : INotifyPropertyChanged
 {
-    public ObservableCollection<Hero> Heroes { get; set; }
+    public ObservableCollection<Monster> Monsters { get; private set; }
 
     public Visibility IsLoadingVisibility
     {
@@ -27,15 +25,16 @@ public class HeroesViewModel : INotifyPropertyChanged
 
     private Visibility _isLoadingVisibility;
 
-    public HeroesViewModel()
+
+    public MonstersViewModel()
     {
-        Heroes = new ObservableCollection<Hero>();
+        Monsters = new ObservableCollection<Monster>();
         LoadData();
     }
 
     public void Refresh()
     {
-        Heroes.Clear();
+        Monsters.Clear();
         LoadData();
     }
 
@@ -59,18 +58,18 @@ public class HeroesViewModel : INotifyPropertyChanged
             };
         }
 
-        var heroes = await client.GetFromJsonAsync<IEnumerable<Hero>>("heroes");
-        if (heroes != null)
+
+        var monsters = await client.GetFromJsonAsync<IEnumerable<Monster>>("monsters");
+        if (monsters != null)
         {
-            foreach (var hero in heroes)
+            foreach (var monster in monsters)
             {
-                Heroes.Add(hero);
+                Monsters.Add(monster);
             }
         }
 
         IsLoadingVisibility = Visibility.Collapsed;
     }
-
 
     private void NotifyPropertyChanged(string name)
     {

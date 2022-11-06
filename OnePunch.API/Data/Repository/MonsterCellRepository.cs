@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Data.Repository;
+namespace OnePunch.Api.Data.Repository;
 
 public class MonsterCellRepository
 {

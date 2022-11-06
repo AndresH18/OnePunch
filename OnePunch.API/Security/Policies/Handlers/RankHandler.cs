@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using OnePunchApi.Security.Policies.Requirements;
-using OnePunchApi.Services;
+using OnePunch.Api.Security.Policies.Requirements;
+using OnePunch.Api.Services;
 
-namespace OnePunchApi.Security.Policies.Handlers;
+namespace OnePunch.Api.Security.Policies.Handlers;
 
 public class RankHandler : AuthorizationHandler<RankRequirement>
 {

@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Security;
+﻿namespace OnePunch.Api.Security;
 
 public class User
 {

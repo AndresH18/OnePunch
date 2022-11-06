@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
+using ConsoleApp;
+
 Console.WriteLine("Hello, World!");
 
 // using var client = new HttpClient{BaseAddress = new Uri("https://localhost:7291")};
@@ -9,10 +11,13 @@ Console.WriteLine("Hello, World!");
 var hero = (HeroT?) Activator.CreateInstance(typeof(HeroT), "");
 Console.WriteLine(hero);
 
-internal class HeroT
+namespace ConsoleApp
 {
-    public HeroT(string s)
+    internal class HeroT
     {
+        public HeroT(string s)
+        {
         
+        }
     }
 }

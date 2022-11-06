@@ -64,23 +64,27 @@
             </MenuItem>
             <MenuItem Header="Monster Cells"
                       Visibility="{Binding HeroSVisibility}">
-                <MenuItem Header="HIII"></MenuItem>
+
             </MenuItem>
             <MenuItem Header="Saitama-sensei"
                       Visibility="{Binding SaitamaVisibility}" />
 
-            <MenuItem Header="Account"
+            <MenuItem x:Name="AccountMenuItem"
+                      Header="Account"
                       HorizontalAlignment="Right">
                 <MenuItem x:Name="LoginMenuItem"
                           Header="Login"
-                          Click="LoginButton_OnClick" />
+                          Click="LoginButton_OnClick"
+                          Visibility="Visible" />
                 <MenuItem x:Name="LogoutMenuItem"
                           Header="Log out"
-                          Click="LogoutMenuItem_OnClick" />
+                          Click="LogoutMenuItem_OnClick"
+                          Visibility="Collapsed" />
             </MenuItem>
         </Menu>
 
-        <Frame x:Name="Frame" />
+        <Frame x:Name="Frame"
+               NavigationUIVisibility="Hidden" />
 
     </DockPanel>
 </Window>

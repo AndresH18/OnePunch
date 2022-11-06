@@ -1,4 +1,4 @@
-﻿namespace OnePunchApi.Security;
+﻿namespace OnePunch.Api.Security;
 
 /// <summary>
 /// Esta clase emularia la Base de Datos de los Usuarios

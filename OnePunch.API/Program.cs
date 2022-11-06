@@ -2,15 +2,16 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
-using OnePunchApi.Data;
-using OnePunchApi.Data.Repository;
+using OnePunch.Api.Data;
+using OnePunch.Api.Data.Repository;
+using OnePunch.Api.Security.Models;
+using OnePunch.Api.Security.Policies;
+using OnePunch.Api.Security.Policies.Handlers;
+using OnePunch.Api.Security.Policies.Requirements;
+using OnePunch.Api.Services;
 using OnePunchApi.Security.Models;
-using OnePunchApi.Security.Policies;
-using OnePunchApi.Security.Policies.Handlers;
-using OnePunchApi.Security.Policies.Requirements;
-using OnePunchApi.Services;
 using Shared.Data.Model;
-using RoleRequirement = OnePunchApi.Security.Policies.Requirements.RoleRequirement;
+using RoleRequirement = OnePunch.Api.Security.Policies.Requirements.RoleRequirement;
 
 var builder = WebApplication.CreateBuilder(args);
 

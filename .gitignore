@@ -11,3 +11,5 @@ riderModule.iml
 /OnePunchApi/Properties
 /.vscode
 *.pubxml
+/OnePunch.Api/heroes.db-wal
+/OnePunch.Api/heroes.db-shm

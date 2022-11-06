@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using OnePunchApi.Security.Models;
+using OnePunch.Api.Security.Models;
 
-namespace OnePunchApi.Security.Policies.Requirements;
+namespace OnePunch.Api.Security.Policies.Requirements;
 
 public class RoleRequirement : IAuthorizationRequirement
 {

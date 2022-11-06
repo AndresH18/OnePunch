@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OnePunch.WPF.Services;
 using OnePunch.WPF.View.Hero;
 using OnePunch.WPF.View.Login;
+using OnePunch.WPF.View.Monster;
 
 namespace OnePunch.WPF;
 
@@ -62,6 +63,8 @@ public partial class App : Application
 
         return builder.Build();
     }
+
+   
 }
 
 public static class ServicesExtensions
@@ -69,7 +72,8 @@ public static class ServicesExtensions
     public static void AddNavDestinations(this ServiceCollection serviceCollection)
     {
         // TODO: add navigation destinations here, maybe as transient
-        serviceCollection.AddScoped<HeroesPage>();
         serviceCollection.AddTransient<LoginWindow>();
+        serviceCollection.AddScoped<HeroesPage>();
+        serviceCollection.AddScoped<MonstersPage>();
     }
 }

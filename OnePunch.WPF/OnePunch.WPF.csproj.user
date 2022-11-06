@@ -8,12 +8,18 @@
     <Compile Update="View\Login\LoginWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="View\Monster\MonstersPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="View\Hero\HeroesPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="View\Login\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="View\Monster\MonstersPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

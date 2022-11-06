@@ -1,13 +1,13 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using Microsoft.IdentityModel.Tokens;
-using OnePunchApi.Data;
-using OnePunchApi.Security.Models;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.IdentityModel.Tokens;
+using OnePunch.Api.Data;
+using OnePunch.Api.Security.Models;
 using Shared.Data.Model;
 
-namespace OnePunchApi.Services;
+namespace OnePunch.Api.Services;
 
 public class UserManager
 {
@@ -29,7 +29,6 @@ public class UserManager
         var user = _db.Users
             .FirstOrDefault(u => u.Username.Equals(login.Username)
                                  && u.Password.Equals(login.Password));
-        _logger.LogInformation($"Authenticated user: {login.Username}");
         return user;
     }
 
