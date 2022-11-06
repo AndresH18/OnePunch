@@ -29,8 +29,13 @@
         <!--         </StackPanel> -->
         <!--     </GroupBox> -->
         <!-- </Grid> -->
+        <ProgressBar IsIndeterminate="True"
+                     Height="10"
+                     HorizontalAlignment="Stretch"
+                     HorizontalContentAlignment="Stretch"
+                     DockPanel.Dock="Top"
+                     Visibility="{Binding Path=IsLoadingVisibility}" />
         <DataGrid
-            SelectedItem="{Binding Path=SelectedHero, Mode=TwoWay}"
             ItemsSource="{Binding Path=Heroes, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
             AutoGenerateColumns="False"
             IsReadOnly="True"

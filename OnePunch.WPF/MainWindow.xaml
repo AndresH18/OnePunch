@@ -83,7 +83,8 @@
             </MenuItem>
         </Menu>
 
-        <Frame x:Name="Frame" />
+        <Frame x:Name="Frame"
+               NavigationUIVisibility="Hidden" />
 
     </DockPanel>
 </Window>

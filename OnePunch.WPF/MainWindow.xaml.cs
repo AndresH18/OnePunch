@@ -19,6 +19,7 @@ using OnePunch.Api.Security.Models;
 using OnePunch.WPF.Services;
 using OnePunch.WPF.View.Hero;
 using OnePunch.WPF.View.Login;
+using OnePunch.WPF.View.Monster;
 using Shared.Data.Model;
 
 namespace OnePunch.WPF;
@@ -69,6 +70,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     private readonly Dictionary<string, Type> _navigationDictionary = new()
     {
         {"view-heroes", typeof(HeroesPage)},
+        {"view-monsters", typeof(MonstersPage)}
     };
 
     private Type? _selectedType = default;
@@ -85,11 +87,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         if (sender is MenuItem {Tag: string tag})
         {
-            if (_navigationDictionary.TryGetValue(tag, out var navType) && _selectedType != navType)
+            if (_navigationDictionary.TryGetValue(tag, out var navType))
             {
-                _selectedType = navType;
-                var o = _services.GetService(_selectedType);
-                Frame.Navigate(o);
+                if (_selectedType != navType)
+                {
+                    _selectedType = navType;
+                    var o = _services.GetService(_selectedType);
+                    Frame.Navigate(o);
+                }
             }
             else
             {
@@ -145,7 +150,6 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         HeroSVisibility = Visibility.Collapsed;
         SaitamaVisibility = Visibility.Collapsed;
         */
-
     }
 
     // TODO: create events for login and logout
