@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OnePunch.WPF.ViewModel;
 
 namespace OnePunch.WPF.View.Hero;
 
@@ -25,5 +26,12 @@ public partial class HeroesPage : Page
         InitializeComponent();
     }
 
-    
+
+    private void RefreshButton_OnClick(object sender, RoutedEventArgs e)
+    {
+        var dockpanel = (DockPanel) Content;
+        var vm = (HeroesViewModel) dockpanel.DataContext;
+        vm.Refresh();
+
+    }
 }

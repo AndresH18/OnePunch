@@ -20,7 +20,13 @@
                      HorizontalAlignment="Stretch"
                      HorizontalContentAlignment="Stretch"
                      DockPanel.Dock="Top"
-                     Visibility="{Binding Path=IsLoadingVisibility}"/>
+                     Visibility="{Binding Path=IsLoadingVisibility}" />
+        <StackPanel Orientation="Horizontal"
+                    DockPanel.Dock="Top">
+            <Button Content="Refresh"
+                    Click="RefreshButton_OnClick">
+            </Button>
+        </StackPanel>
         <DataGrid
             ItemsSource="{Binding Path=Monsters}"
             AutoGenerateColumns="False"

@@ -33,6 +33,12 @@ public class HeroesViewModel : INotifyPropertyChanged
         LoadData();
     }
 
+    public void Refresh()
+    {
+        Heroes.Clear();
+        LoadData();
+    }
+
     private async void LoadData()
     {
         IsLoadingVisibility = Visibility.Visible;
@@ -64,6 +70,7 @@ public class HeroesViewModel : INotifyPropertyChanged
 
         IsLoadingVisibility = Visibility.Collapsed;
     }
+
 
     private void NotifyPropertyChanged(string name)
     {

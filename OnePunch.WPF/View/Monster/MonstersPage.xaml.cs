@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using OnePunch.WPF.ViewModel;
 
 namespace OnePunch.WPF.View.Monster
 {
@@ -23,6 +24,13 @@ namespace OnePunch.WPF.View.Monster
         public MonstersPage()
         {
             InitializeComponent();
+        }
+
+        private void RefreshButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            var dockpanel = (DockPanel) Content;
+            var vm = (MonstersViewModel) dockpanel.DataContext;
+            vm.Refresh();
         }
     }
 }

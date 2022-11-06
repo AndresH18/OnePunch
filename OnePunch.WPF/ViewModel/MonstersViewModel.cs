@@ -32,6 +32,12 @@ public class MonstersViewModel : INotifyPropertyChanged
         LoadData();
     }
 
+    public void Refresh()
+    {
+        Monsters.Clear();
+        LoadData();
+    }
+
     private async void LoadData()
     {
         IsLoadingVisibility = Visibility.Visible;
