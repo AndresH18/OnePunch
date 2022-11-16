@@ -29,7 +29,6 @@ builder.Services.AddScoped<SponsorRepository>();
 builder.Services.AddScoped<MonsterCellRepository>();
 builder.Services.AddScoped<FightsRepository>();
 
-
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
