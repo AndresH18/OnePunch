@@ -28,5 +28,5 @@ public enum DisasterLevel
     /// <summary>
     /// A threat endangering the survival of humanity in general.
     /// </summary>
-    God,
+    God
 }
